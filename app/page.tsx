@@ -23,6 +23,8 @@ export default function Home() {
     setShowQRCode(true);
   };
 
+  const lastAppointment = appointments[appointments.length - 1];
+
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
       <h1 className="text-2xl font-bold">Next Appointment:</h1>
@@ -48,7 +50,7 @@ export default function Home() {
         </button>
       </div>
       {showQRCode && (
-        <QRCode className="mb-5" value={`${appointments[appointments.length - 1].name}, ${appointments[appointments.length - 1].selectedDate}`} />
+        <QRCode className="mb-5" value={`${lastAppointment.name}, ${lastAppointment.selectedDate}`} />
       )}
       <div>
         {appointments.map((appointment, index) => (
