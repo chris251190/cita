@@ -1,11 +1,13 @@
 "use client"
 import React, { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
+import QRCode from 'qrcode.react';
 
 export default function Home() {
   const [name, setName] = useState('');
-  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [appointments, setAppointments] = useState<{ name: string; selectedDate: string }[]>([]);
+  const [showQRCode, setShowQRCode] = useState(false);
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -18,6 +20,7 @@ export default function Home() {
   const handleButtonClick = () => {
     const newAppointment = { name, selectedDate };
     setAppointments((prevAppointments) => [...prevAppointments, newAppointment]);
+    setShowQRCode(true);
   };
 
   return (
@@ -34,7 +37,7 @@ export default function Home() {
         <input
           type="date"
           className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
-          value={selectedDate}
+          value={selectedDate || new Date().toISOString().split('T')[0]}
           onChange={handleDateChange}
         />
         <button
@@ -46,7 +49,12 @@ export default function Home() {
       </div>
       <div>
         {appointments.map((appointment, index) => (
-          <p key={index}>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()}</p>
+          <div key={index} className="flex items-center">
+            <p className='mr-5'>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()}</p>
+            {showQRCode && (
+              <QRCode value={`${appointment.name}, ${appointment.selectedDate}`} />
+            )}
+          </div>
         ))}
       </div>
     </main>
