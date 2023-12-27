@@ -5,6 +5,7 @@ import { FaCheck } from 'react-icons/fa';
 export default function Home() {
   const [name, setName] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
+  const [appointments, setAppointments] = useState<{ name: string; selectedDate: string }[]>([]);
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -15,13 +16,14 @@ export default function Home() {
   };
 
   const handleButtonClick = () => {
-    console.log(`Name: ${name}, Selected Date: ${selectedDate}`);
+    const newAppointment = { name, selectedDate };
+    setAppointments((prevAppointments) => [...prevAppointments, newAppointment]);
   };
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
-      <h1 className="text-2xl font-bold mb-3">Next Appointment:</h1>
-      <div className="flex">
+      <h1 className="text-2xl font-bold">Next Appointment:</h1>
+      <div className="flex m-5">
         <input
           type="text"
           className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
@@ -41,6 +43,11 @@ export default function Home() {
         >
           <FaCheck />
         </button>
+      </div>
+      <div>
+        {appointments.map((appointment, index) => (
+          <p key={index}>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()}</p>
+        ))}
       </div>
     </main>
   );
