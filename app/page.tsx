@@ -6,7 +6,7 @@ import { FaCheck, FaTimes } from 'react-icons/fa';
 export default function Home() {
   const [name, setName] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-  const [selectedTime, setSelectedTime] = useState('');
+  const [selectedTime, setSelectedTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
   const [appointments, setAppointments] = useState<{ name: string; selectedDate: string; selectedTime: string }[]>([]);
   const [showQRCode, setShowQRCode] = useState(false);
 
