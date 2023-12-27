@@ -26,7 +26,7 @@ export default function Home() {
       <div className="flex m-5">
         <input
           type="text"
-          className="border border-gray-300 rounded-md px-1 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
+          className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
           placeholder="Enter your name"
           value={name}
           onChange={handleNameChange}
