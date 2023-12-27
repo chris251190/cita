@@ -22,7 +22,7 @@ export default function Home() {
     setSelectedTime(event.target.value);
   };
 
-  const handleFormSubmit = (e:any) => {
+  const handleFormSubmit = (e: any) => {
     e.preventDefault();
 
     const newAppointment = { name, selectedDate, selectedTime };
@@ -59,7 +59,7 @@ export default function Home() {
           <input
             type="time"
             className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
-            value={selectedTime}
+            value={selectedTime || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
             onChange={handleTimeChange}
           />
           <button
