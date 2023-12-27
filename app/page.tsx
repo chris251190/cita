@@ -24,7 +24,9 @@ export default function Home() {
   };
 
   const handleRemoveAppointment = (index: number) => {
-    setAppointments((prevAppointments) => prevAppointments.filter((_, i) => i !== index));
+    setAppointments((prevAppointments) => {
+      return prevAppointments.filter((_, i) => i !== index);
+    });
   };
 
   const lastAppointment = appointments[appointments.length - 1];
