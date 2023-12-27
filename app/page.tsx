@@ -22,7 +22,9 @@ export default function Home() {
     setSelectedTime(event.target.value);
   };
 
-  const handleButtonClick = () => {
+  const handleFormSubmit = (e:any) => {
+    e.preventDefault();
+
     const newAppointment = { name, selectedDate, selectedTime };
     setAppointments((prevAppointments) => [...prevAppointments, newAppointment]);
     setShowQRCode(true);
@@ -40,31 +42,33 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center p-24">
       <h1 className="text-2xl font-bold">Next Appointment:</h1>
       <div className="flex m-5">
-        <input
-          type="text"
-          className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
-          placeholder="Enter your name"
-          value={name}
-          onChange={handleNameChange}
-        />
-        <input
-          type="date"
-          className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
-          value={selectedDate || new Date().toISOString().split('T')[0]}
-          onChange={handleDateChange}
-        />
-        <input
-          type="time"
-          className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
-          value={selectedTime}
-          onChange={handleTimeChange}
-        />
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={handleButtonClick}
-        >
-          <FaCheck />
-        </button>
+        <form onSubmit={handleFormSubmit}>
+          <input
+            type="text"
+            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
+            placeholder="Enter your name"
+            value={name}
+            onChange={handleNameChange}
+          />
+          <input
+            type="date"
+            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
+            value={selectedDate || new Date().toISOString().split('T')[0]}
+            onChange={handleDateChange}
+          />
+          <input
+            type="time"
+            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
+            value={selectedTime}
+            onChange={handleTimeChange}
+          />
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            <FaCheck />
+          </button>
+        </form>
       </div>
       {showQRCode && lastAppointment && (
         <QRCode className="mb-5" value={`${lastAppointment.name}, ${lastAppointment.selectedDate}, ${lastAppointment.selectedTime}`} />
