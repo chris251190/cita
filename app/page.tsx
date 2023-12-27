@@ -61,7 +61,7 @@ export default function Home() {
       <div>
         {appointments.map((appointment, index) => (
           <div key={index} className="flex items-center">
-            <p className='mr-5 mb-5'>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()}</p>
+            <p className='mr-5 mt-3 mb-3'>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()}</p>
             <button
               className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
               onClick={() => handleRemoveAppointment(index)}
