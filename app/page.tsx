@@ -47,13 +47,13 @@ export default function Home() {
           <FaCheck />
         </button>
       </div>
+      {showQRCode && (
+        <QRCode className="mb-5" value={`${appointments[appointments.length - 1].name}, ${appointments[appointments.length - 1].selectedDate}`} />
+      )}
       <div>
         {appointments.map((appointment, index) => (
           <div key={index} className="flex items-center">
-            <p className='mr-5'>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()}</p>
-            {showQRCode && (
-              <QRCode className="mb-5" value={`${appointment.name}, ${appointment.selectedDate}`} />
-            )}
+            <p className='mr-5 mb-5'>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()}</p>
           </div>
         ))}
       </div>
