@@ -1,12 +1,13 @@
 "use client";
 import QRCode from 'qrcode.react';
 import React, { useState } from 'react';
-import { FaCheck, FaTimes } from 'react-icons/fa'; // Import FaTimes icon
+import { FaCheck, FaTimes } from 'react-icons/fa';
 
 export default function Home() {
   const [name, setName] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-  const [appointments, setAppointments] = useState<{ name: string; selectedDate: string }[]>([]);
+  const [selectedTime, setSelectedTime] = useState('');
+  const [appointments, setAppointments] = useState<{ name: string; selectedDate: string; selectedTime: string }[]>([]);
   const [showQRCode, setShowQRCode] = useState(false);
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,8 +18,12 @@ export default function Home() {
     setSelectedDate(event.target.value);
   };
 
+  const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedTime(event.target.value);
+  };
+
   const handleButtonClick = () => {
-    const newAppointment = { name, selectedDate };
+    const newAppointment = { name, selectedDate, selectedTime };
     setAppointments((prevAppointments) => [...prevAppointments, newAppointment]);
     setShowQRCode(true);
   };
@@ -48,6 +53,12 @@ export default function Home() {
           value={selectedDate || new Date().toISOString().split('T')[0]}
           onChange={handleDateChange}
         />
+        <input
+          type="time"
+          className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
+          value={selectedTime}
+          onChange={handleTimeChange}
+        />
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={handleButtonClick}
@@ -56,12 +67,12 @@ export default function Home() {
         </button>
       </div>
       {showQRCode && lastAppointment && (
-        <QRCode className="mb-5" value={`${lastAppointment.name}, ${lastAppointment.selectedDate}`} />
+        <QRCode className="mb-5" value={`${lastAppointment.name}, ${lastAppointment.selectedDate}, ${lastAppointment.selectedTime}`} />
       )}
       <div>
         {appointments.map((appointment, index) => (
           <div key={index} className="flex items-center">
-            <p className='mr-5 mt-3 mb-3'>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()}</p>
+            <p className='mr-5 mt-3 mb-3'>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime}</p>
             <button
               className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
               onClick={() => handleRemoveAppointment(index)}
