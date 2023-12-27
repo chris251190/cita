@@ -52,7 +52,7 @@ export default function Home() {
           <div key={index} className="flex items-center">
             <p className='mr-5'>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()}</p>
             {showQRCode && (
-              <QRCode value={`${appointment.name}, ${appointment.selectedDate}`} />
+              <QRCode className="mb-5" value={`${appointment.name}, ${appointment.selectedDate}`} />
             )}
           </div>
         ))}
