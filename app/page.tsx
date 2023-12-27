@@ -1,7 +1,7 @@
-"use client"
-import React, { useState } from 'react';
-import { FaCheck } from 'react-icons/fa';
+"use client";
 import QRCode from 'qrcode.react';
+import React, { useState } from 'react';
+import { FaCheck, FaTimes } from 'react-icons/fa'; // Import FaTimes icon
 
 export default function Home() {
   const [name, setName] = useState('');
@@ -21,6 +21,10 @@ export default function Home() {
     const newAppointment = { name, selectedDate };
     setAppointments((prevAppointments) => [...prevAppointments, newAppointment]);
     setShowQRCode(true);
+  };
+
+  const handleRemoveAppointment = (index: number) => {
+    setAppointments((prevAppointments) => prevAppointments.filter((_, i) => i !== index));
   };
 
   const lastAppointment = appointments[appointments.length - 1];
@@ -49,13 +53,19 @@ export default function Home() {
           <FaCheck />
         </button>
       </div>
-      {showQRCode && (
+      {showQRCode && lastAppointment && (
         <QRCode className="mb-5" value={`${lastAppointment.name}, ${lastAppointment.selectedDate}`} />
       )}
       <div>
         {appointments.map((appointment, index) => (
           <div key={index} className="flex items-center">
             <p className='mr-5 mb-5'>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()}</p>
+            <button
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              onClick={() => handleRemoveAppointment(index)}
+            >
+              <FaTimes />
+            </button>
           </div>
         ))}
       </div>
