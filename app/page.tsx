@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import { FaCheck } from 'react-icons/fa';
 
 export default function Home() {
   const [name, setName] = useState('');
@@ -37,7 +38,7 @@ export default function Home() {
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={handleButtonClick}
         >
-          Display
+          <FaCheck /> {/* Replace "Display" with the checkmark icon */}
         </button>
       </div>
     </main>
