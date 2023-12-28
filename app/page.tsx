@@ -88,7 +88,9 @@ export default function Home() {
         </form>
       </div>
 
-      <div>
+      <div className='flex min-h-screen flex-col items-center'>
+      <h1 className="text-2xl font-bold">Recent Appointments:</h1>
+
         {appointments.map((appointment, index) => (
           <div key={index} className="flex items-center">
             <p className='mr-5 mt-3 mb-3'>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime}</p>
