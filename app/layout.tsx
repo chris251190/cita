@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Head from 'next/head'
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -18,12 +16,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
-        <meta name="google-site-verification" content="MF0nmTcSbW1jaxYHcBLYd1ZxfIqZ7aEwxJK_FAXoeaU" />
-        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}`} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/Cita.png`} />
-      </Head>
       <body className={inter.className}>{children}</body>
     </html>
   )
