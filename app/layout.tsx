@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Cita',
   description: 'Welcome to Cita the easiest way to create appointments!',
+  keywords: ["Cita", "Appointments", "Easy", "QR Code"],
   openGraph: {
     images: `${process.env.NEXT_PUBLIC_VERCEL_URL}/Cita.png`,
   },
