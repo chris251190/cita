@@ -3,6 +3,8 @@ import Head from 'next/head';
 import QRCode from 'qrcode.react';
 import React, { useState } from 'react';
 import { FaCheck, FaTimes, FaEye, FaCalendar } from 'react-icons/fa';
+import Image from 'next/image';
+
 
 interface Appointment {
   name: string;
@@ -74,55 +76,60 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
+    <main className="flex min-h-screen flex-col p-12">
 
       <Head>
         <meta property="og:image" content="/Cita.png" />
       </Head>
 
-      <h1 className="text-2xl font-bold">Next Appointment:</h1>
-      <div className="flex m-5">
-        <form onSubmit={handleFormSubmit}>
-          <input
-            type="text"
-            name="name"
-            className="border border-gray-300 rounded-md px-1 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
-            placeholder="Name and title"
-            value={name}
-            onChange={handleInputChange}
-          />
-          <input
-            type="text"
-            name="location"
-            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
-            placeholder="Location"
-            value={location}
-            onChange={handleInputChange}
-          />
-          <input
-            type="date"
-            name="date"
-            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
-            value={selectedDate}
-            onChange={handleInputChange}
-          />
-          <input
-            type="time"
-            name="time"
-            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
-            value={selectedTime}
-            onChange={handleInputChange}
-          />
-          <button
-            type="submit"
-            className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
-          >
-            <FaCheck />
-          </button>
-        </form>
+      <Image className="mb-20" src="/Cita.png" alt="Logo" width={300} height={300} />
+
+      <div className='flex flex-col items-center justify-center'>
+
+        <h1 className="text-2xl font-bold">Next Appointment:</h1>
+        <div className="flex m-5">
+          <form onSubmit={handleFormSubmit}>
+            <input
+              type="text"
+              name="name"
+              className="border border-gray-300 rounded-md px-1 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
+              placeholder="Name and title"
+              value={name}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              name="location"
+              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
+              placeholder="Location"
+              value={location}
+              onChange={handleInputChange}
+            />
+            <input
+              type="date"
+              name="date"
+              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
+              value={selectedDate}
+              onChange={handleInputChange}
+            />
+            <input
+              type="time"
+              name="time"
+              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
+              value={selectedTime}
+              onChange={handleInputChange}
+            />
+            <button
+              type="submit"
+              className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+            >
+              <FaCheck />
+            </button>
+          </form>
+        </div>
       </div>
 
-      <div className='flex min-h-screen flex-col items-center'>
+      <div className='flex flex-col items-center'>
         <h1 className="text-2xl font-bold">Recent Appointments:</h1>
 
         {appointments.map((appointment, index) => (
