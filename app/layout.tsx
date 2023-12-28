@@ -1,22 +1,14 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { Head } from 'next/document'
+import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Cita',
   description: 'Welcome to Cita the easiest way to create appointments!',
-  keywords: ["Cita", "Appointments", "Easy", "QR Code"],
-  openGraph: {
-    url: `${process.env.NEXT_PUBLIC_VERCEL_URL}`,
-    type: 'website',
-    images: `${process.env.NEXT_PUBLIC_VERCEL_URL}/Cita.png`,
-    title: 'Cita',
-    description: 'Welcome to Cita the easiest way to create appointments!',
-    siteName: 'Cita',
-  },
+  keywords: ["Cita", "Appointments", "Easy", "QR Code"]
 }
 
 export default function RootLayout({
