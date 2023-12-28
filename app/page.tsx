@@ -36,7 +36,7 @@ export default function Home() {
     });
   };
 
-  const formatGoogleCalendarURL = (appointment) => {
+  const formatGoogleCalendarURL = (appointment: { name: any; selectedDate: any; selectedTime: any; }) => {
     const startDate = new Date(appointment.selectedDate + 'T' + appointment.selectedTime);
     const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // 1 hour later
 
@@ -48,7 +48,7 @@ export default function Home() {
     };
 
     const url = new URL('https://www.google.com/calendar/render');
-    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+    Object.keys(params).forEach(key => url.searchParams.append(key, (params as any)[key]));
 
     return url.toString();
   };
