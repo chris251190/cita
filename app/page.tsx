@@ -3,45 +3,51 @@ import QRCode from 'qrcode.react';
 import React, { useState } from 'react';
 import { FaCheck, FaTimes, FaQrcode } from 'react-icons/fa';
 
+interface Appointment {
+  name: string;
+  selectedDate: string;
+  selectedTime: string;
+}
 
 export default function Home() {
   const [name, setName] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [selectedTime, setSelectedTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
-  const [appointments, setAppointments] = useState<{ name: string; selectedDate: string; selectedTime: string }[]>([]);
+  const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [showQRCodeIndex, setShowQRCodeIndex] = useState<number | null>(null);
 
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'date':
+        setSelectedDate(value);
+        break;
+      case 'time':
+        setSelectedTime(value);
+        break;
+    }
   };
 
-  const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedDate(event.target.value);
-  };
-
-  const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedTime(event.target.value);
-  };
-
-  const handleFormSubmit = (e: any) => {
+  const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newAppointment = { name, selectedDate, selectedTime };
-    setAppointments((prevAppointments) => [...prevAppointments, newAppointment]);
+    const newAppointment: Appointment = { name, selectedDate, selectedTime };
+    setAppointments(prevAppointments => [...prevAppointments, newAppointment]);
     setShowQRCodeIndex(appointments.length);
   };
 
   const handleRemoveAppointment = (index: number) => {
-    setAppointments((prevAppointments) => {
-      return prevAppointments.filter((_, i) => i !== index);
-    });
+    setAppointments(prevAppointments => prevAppointments.filter((_, i) => i !== index));
   };
 
   const handleToggleQRCode = (index: number) => {
-    setShowQRCodeIndex((prevIndex) => (prevIndex === index ? null : index));
+    setShowQRCodeIndex(prevIndex => (prevIndex === index ? null : index));
   };
 
-  const formatGoogleCalendarURL = (appointment: { name: any; selectedDate: any; selectedTime: any; }) => {
+  const formatGoogleCalendarURL = (appointment: Appointment) => {
     const startDate = new Date(appointment.selectedDate + 'T' + appointment.selectedTime);
     const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // 1 hour later
 
@@ -65,22 +71,25 @@ export default function Home() {
         <form onSubmit={handleFormSubmit}>
           <input
             type="text"
+            name="name"
             className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
             placeholder="Enter your name"
             value={name}
-            onChange={handleNameChange}
+            onChange={handleInputChange}
           />
           <input
             type="date"
+            name="date"
             className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
-            value={selectedDate || new Date().toISOString().split('T')[0]}
-            onChange={handleDateChange}
+            value={selectedDate}
+            onChange={handleInputChange}
           />
           <input
             type="time"
+            name="time"
             className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
-            value={selectedTime || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-            onChange={handleTimeChange}
+            value={selectedTime}
+            onChange={handleInputChange}
           />
           <button
             type="submit"
@@ -98,12 +107,12 @@ export default function Home() {
           <div key={index} className="flex items-center">
             <p className='mr-5 mt-3 mb-3'>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime}</p>
 
-            {showQRCodeIndex === index ? (
+            {showQRCodeIndex === index && (
               <QRCode
                 className="mr-5 mt-5 mb-5"
                 value={formatGoogleCalendarURL(appointment)}
               />
-            ) : null}
+            )}
             <button
               className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded mr-3"
               onClick={() => handleToggleQRCode(index)}
