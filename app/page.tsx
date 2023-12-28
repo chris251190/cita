@@ -1,4 +1,5 @@
 "use client";
+import Head from 'next/head';
 import QRCode from 'qrcode.react';
 import React, { useState } from 'react';
 import { FaCheck, FaTimes, FaEye, FaCalendar } from 'react-icons/fa';
@@ -74,6 +75,11 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
+
+      <Head>
+        <meta property="og:image" content="/Cita.png" />
+      </Head>
+
       <h1 className="text-2xl font-bold">Next Appointment:</h1>
       <div className="flex m-5">
         <form onSubmit={handleFormSubmit}>
