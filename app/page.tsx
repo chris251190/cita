@@ -1,5 +1,4 @@
 "use client";
-import Head from 'next/head';
 import QRCode from 'qrcode.react';
 import React, { useState } from 'react';
 import { FaCheck, FaTimes, FaEye, FaCalendar } from 'react-icons/fa';
@@ -77,12 +76,6 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col p-12">
-      <Head>
-        <meta name="google-site-verification" content="MF0nmTcSbW1jaxYHcBLYd1ZxfIqZ7aEwxJK_FAXoeaU" />
-        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}`} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/Cita.png`} />
-      </Head>
 
       <Image className="mb-20" src="/Cita.png" alt="Logo" width={300} height={300} />
 
