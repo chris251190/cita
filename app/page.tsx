@@ -45,33 +45,40 @@ export default function Home() {
         <form onSubmit={handleFormSubmit}>
           <input
             type="text"
-            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
+            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2"
             placeholder="Enter your name"
             value={name}
             onChange={handleNameChange}
           />
           <input
             type="date"
-            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
+            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2"
             value={selectedDate || new Date().toISOString().split('T')[0]}
             onChange={handleDateChange}
           />
           <input
             type="time"
-            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black mr-2"
+            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2"
             value={selectedTime || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
             onChange={handleTimeChange}
           />
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-orange-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
             <FaCheck />
           </button>
         </form>
       </div>
       {showQRCode && lastAppointment && (
-        <QRCode className="mb-5" value={`${lastAppointment.name}, ${lastAppointment.selectedDate}, ${lastAppointment.selectedTime}`} />
+        <QRCode className="mb-5" value={`BEGIN:VCALENDAR
+        VERSION:2.0
+        BEGIN:VEVENT
+        SUMMARY:${lastAppointment.name}
+        DTSTART:${lastAppointment.selectedDate}T${lastAppointment.selectedTime}
+        DTEND:${lastAppointment.selectedDate}T${lastAppointment.selectedTime}
+        END:VEVENT
+        END:VCALENDAR`} />
       )}
       <div>
         {appointments.map((appointment, index) => (
