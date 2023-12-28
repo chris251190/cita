@@ -87,12 +87,7 @@ export default function Home() {
           </button>
         </form>
       </div>
-      {showQRCode && lastAppointment && (
-        <QRCode
-          className="mb-5"
-          value={formatGoogleCalendarURL(lastAppointment)}
-        />
-      )}
+      
       <div>
         {appointments.map((appointment, index) => (
           <div key={index} className="flex items-center">
@@ -106,6 +101,13 @@ export default function Home() {
           </div>
         ))}
       </div>
+
+      {showQRCode && lastAppointment && (
+        <QRCode
+          className="mb-5"
+          value={formatGoogleCalendarURL(lastAppointment)}
+        />
+      )}
     </main>
   );
 }
