@@ -81,8 +81,6 @@ export default function Home() {
         <meta property="og:image" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/Cita.png`} />
       </Head>
 
-      {process.env.NEXT_PUBLIC_VERCEL_URL}
-
       <Image className="mb-20" src="/Cita.png" alt="Logo" width={300} height={300} />
 
       <div className='flex flex-col items-center justify-center'>
