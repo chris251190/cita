@@ -81,6 +81,7 @@ export default function Home() {
         <meta property="og:url" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}`} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/Cita.png`} />
+        <meta name="google-site-verification" content="MF0nmTcSbW1jaxYHcBLYd1ZxfIqZ7aEwxJK_FAXoeaU" />
       </Head>
 
       <Image className="mb-20" src="/Cita.png" alt="Logo" width={300} height={300} />
