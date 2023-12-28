@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Cita',
   description: 'Welcome to Cita the easiest way to create appointments!',
+  openGraph: {
+    images: `${process.env.NEXT_PUBLIC_VERCEL_URL}/Cita.png`,
+  },
 }
 
 export default function RootLayout({

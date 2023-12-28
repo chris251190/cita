@@ -78,10 +78,6 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col p-12">
 
-      <Head>
-        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/Cita.png`} />
-      </Head>
-
       <Image className="mb-20" src="/Cita.png" alt="Logo" width={300} height={300} />
 
       <div className='flex flex-col items-center justify-center'>
