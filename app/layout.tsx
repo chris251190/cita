@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: `${process.env.NEXT_PUBLIC_VERCEL_URL}/Cita.png`
   },
-  other: { googleSiteVerification: "MF0nmTcSbW1jaxYHcBLYd1ZxfIqZ7aEwxJK_FAXoeaU" },
+  other: { "google-site-verification": "MF0nmTcSbW1jaxYHcBLYd1ZxfIqZ7aEwxJK_FAXoeaU" },
 }
 
 export default function RootLayout({
