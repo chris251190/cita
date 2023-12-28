@@ -5,12 +5,14 @@ import { FaCheck, FaTimes, FaQrcode } from 'react-icons/fa';
 
 interface Appointment {
   name: string;
+  location: string;
   selectedDate: string;
   selectedTime: string;
 }
 
 export default function Home() {
   const [name, setName] = useState('');
+  const [location, setLocation] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [selectedTime, setSelectedTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
   const [appointments, setAppointments] = useState<Appointment[]>([]);
@@ -28,13 +30,16 @@ export default function Home() {
       case 'time':
         setSelectedTime(value);
         break;
+      case 'location':
+        setLocation(value);
+        break;
     }
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newAppointment: Appointment = { name, selectedDate, selectedTime };
+    const newAppointment: Appointment = { name, location, selectedDate, selectedTime };
     setAppointments(prevAppointments => [...prevAppointments, newAppointment]);
     setShowQRCodeIndex(appointments.length);
   };
@@ -48,14 +53,17 @@ export default function Home() {
   };
 
   const formatGoogleCalendarURL = (appointment: Appointment) => {
+    const formatISODate = (date: Date) => date.toISOString().replace(/-|:|\.\d\d\d/g, '');
+
     const startDate = new Date(appointment.selectedDate + 'T' + appointment.selectedTime);
     const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // 1 hour later
 
     const params = {
       action: 'TEMPLATE',
       text: appointment.name,
-      dates: `${startDate.toISOString().replace(/-|:|\.\d\d\d/g, '')}/${endDate.toISOString().replace(/-|:|\.\d\d\d/g, '')}`,
-      details: 'Created via QR Code',
+      dates: `${formatISODate(startDate)}/${formatISODate(endDate)}`,
+      location: appointment.location,
+      details: 'Created via QR Code on Cita',
     };
 
     const url = new URL('https://www.google.com/calendar/render');
@@ -73,8 +81,16 @@ export default function Home() {
             type="text"
             name="name"
             className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
-            placeholder="Enter your name"
+            placeholder="Name and title"
             value={name}
+            onChange={handleInputChange}
+          />
+          <input
+            type="text"
+            name="location"
+            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
+            placeholder="Location"
+            value={location}
             onChange={handleInputChange}
           />
           <input
