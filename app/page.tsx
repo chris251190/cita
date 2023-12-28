@@ -28,6 +28,7 @@ export default function Home() {
 
     const newAppointment = { name, selectedDate, selectedTime };
     setAppointments((prevAppointments) => [...prevAppointments, newAppointment]);
+    setShowQRCodeIndex(appointments.length);
   };
 
   const handleRemoveAppointment = (index: number) => {
@@ -56,8 +57,6 @@ export default function Home() {
 
     return url.toString();
   };
-
-  const lastAppointment = appointments[appointments.length - 1];
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
