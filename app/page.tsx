@@ -1,7 +1,7 @@
 "use client";
 import QRCode from 'qrcode.react';
 import React, { useState } from 'react';
-import { FaCheck, FaTimes, FaQrcode } from 'react-icons/fa';
+import { FaCheck, FaTimes, FaEye, FaCalendar } from 'react-icons/fa';
 
 interface Appointment {
   name: string;
@@ -133,7 +133,14 @@ export default function Home() {
               className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded mr-3"
               onClick={() => handleToggleQRCode(index)}
             >
-              <FaQrcode />
+              <FaEye />
+            </button>
+
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-7"
+              onClick={() => window.open(formatGoogleCalendarURL(appointment), '_blank')}
+            >
+              <FaCalendar />
             </button>
 
             <button
