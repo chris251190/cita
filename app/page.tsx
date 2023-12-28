@@ -1,14 +1,15 @@
 "use client";
 import QRCode from 'qrcode.react';
 import React, { useState } from 'react';
-import { FaCheck, FaTimes } from 'react-icons/fa';
+import { FaCheck, FaTimes, FaQrcode } from 'react-icons/fa';
+
 
 export default function Home() {
   const [name, setName] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [selectedTime, setSelectedTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
   const [appointments, setAppointments] = useState<{ name: string; selectedDate: string; selectedTime: string }[]>([]);
-  const [showQRCode, setShowQRCode] = useState(false);
+  const [showQRCodeIndex, setShowQRCodeIndex] = useState<number | null>(null);
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -27,13 +28,16 @@ export default function Home() {
 
     const newAppointment = { name, selectedDate, selectedTime };
     setAppointments((prevAppointments) => [...prevAppointments, newAppointment]);
-    setShowQRCode(true);
   };
 
   const handleRemoveAppointment = (index: number) => {
     setAppointments((prevAppointments) => {
       return prevAppointments.filter((_, i) => i !== index);
     });
+  };
+
+  const handleToggleQRCode = (index: number) => {
+    setShowQRCodeIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
   const formatGoogleCalendarURL = (appointment: { name: any; selectedDate: any; selectedTime: any; }) => {
@@ -89,16 +93,24 @@ export default function Home() {
       </div>
 
       <div className='flex min-h-screen flex-col items-center'>
-      <h1 className="text-2xl font-bold">Recent Appointments:</h1>
+        <h1 className="text-2xl font-bold">Recent Appointments:</h1>
 
         {appointments.map((appointment, index) => (
           <div key={index} className="flex items-center">
             <p className='mr-5 mt-3 mb-3'>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime}</p>
 
-            <QRCode
-              className="mr-5 mt-5 mb-5"
-              value={formatGoogleCalendarURL(lastAppointment)}
-            />
+            {showQRCodeIndex === index ? (
+              <QRCode
+                className="mr-5 mt-5 mb-5"
+                value={formatGoogleCalendarURL(appointment)}
+              />
+            ) : null}
+            <button
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded mr-3"
+              onClick={() => handleToggleQRCode(index)}
+            >
+              <FaQrcode />
+            </button>
 
             <button
               className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
@@ -106,7 +118,7 @@ export default function Home() {
             >
               <FaTimes />
             </button>
-            
+
           </div>
         ))}
       </div>
