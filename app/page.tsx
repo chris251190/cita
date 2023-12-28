@@ -56,7 +56,7 @@ export default function Home() {
     const formatISODate = (date: Date) => date.toISOString().replace(/-|:|\.\d\d\d/g, '');
 
     const startDate = new Date(appointment.selectedDate + 'T' + appointment.selectedTime);
-    const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // 1 hour later
+    const endDate = new Date(startDate.getTime() + 60 * 60 * 1000);
 
     const params = {
       action: 'TEMPLATE',
