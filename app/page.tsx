@@ -62,20 +62,20 @@ export default function Home() {
         <form onSubmit={handleFormSubmit}>
           <input
             type="text"
-            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2"
+            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
             placeholder="Enter your name"
             value={name}
             onChange={handleNameChange}
           />
           <input
             type="date"
-            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2"
+            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
             value={selectedDate || new Date().toISOString().split('T')[0]}
             onChange={handleDateChange}
           />
           <input
             type="time"
-            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2"
+            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
             value={selectedTime || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
             onChange={handleTimeChange}
           />
