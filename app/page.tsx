@@ -36,6 +36,23 @@ export default function Home() {
     });
   };
 
+  const formatGoogleCalendarURL = (appointment) => {
+    const startDate = new Date(appointment.selectedDate + 'T' + appointment.selectedTime);
+    const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // 1 hour later
+
+    const params = {
+      action: 'TEMPLATE',
+      text: appointment.name,
+      dates: `${startDate.toISOString().replace(/-|:|\.\d\d\d/g, '')}/${endDate.toISOString().replace(/-|:|\.\d\d\d/g, '')}`,
+      details: 'Created via QR Code',
+    };
+
+    const url = new URL('https://www.google.com/calendar/render');
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+    return url.toString();
+  };
+
   const lastAppointment = appointments[appointments.length - 1];
 
   return (
@@ -71,14 +88,10 @@ export default function Home() {
         </form>
       </div>
       {showQRCode && lastAppointment && (
-        <QRCode className="mb-5" value={`BEGIN:VCALENDAR
-        VERSION:2.0
-        BEGIN:VEVENT
-        SUMMARY:${lastAppointment.name}
-        DTSTART:${lastAppointment.selectedDate}T${lastAppointment.selectedTime}
-        DTEND:${lastAppointment.selectedDate}T${lastAppointment.selectedTime}
-        END:VEVENT
-        END:VCALENDAR`} />
+        <QRCode
+          className="mb-5"
+          value={formatGoogleCalendarURL(lastAppointment)}
+        />
       )}
       <div>
         {appointments.map((appointment, index) => (
