@@ -62,7 +62,7 @@ export default function Cita() {
 
     const newAppointment: Appointment = { title, location, selectedDate, selectedTime };
     setAppointments(prevAppointments => [...prevAppointments, newAppointment]);
-    setShowQRCodeIndex(appointments.length);
+    setShowQRCodeIndex(0);
   };
 
   const handleRemoveAppointment = (index: number) => {
