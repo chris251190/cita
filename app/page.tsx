@@ -152,6 +152,7 @@ export default function Cita() {
         {showQRCodeIndex !== null && (
           <h1 className="text-2xl font-bold">Recent Appointments:</h1>
         )}
+        
         {[...appointments].reverse().map((appointment, index) => (
           <div key={index} className="mb-10 flex flex-col items-center justify-center">
             <p className='mt-3 mb-3'><b>{appointment.title ? appointment.title : 'no title'}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime} h</b></p>
