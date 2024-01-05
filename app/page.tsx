@@ -194,7 +194,7 @@ export default function Cita() {
       </div>
 
       <div>
-        {showQRCodeIndex !== null && (
+        {showQRCodeIndex !== null && appointments.length > 0 && (
           <h1 className="text-2xl font-bold mb-5">Recent Appointments:</h1>
         )}
 
