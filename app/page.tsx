@@ -85,7 +85,7 @@ export default function Home() {
             <input
               type="text"
               name="name"
-              className="border border-gray-300 rounded-md px-1 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
+              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
               placeholder="Title"
               value={name}
               onChange={handleInputChange}
