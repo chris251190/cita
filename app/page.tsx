@@ -28,8 +28,16 @@ const InputField: React.FC<InputFieldProps> = ({ type, name, placeholder, value,
     <input
       type={type}
       name={name}
-      className={`bg-transparent border-b border-black px-1 focus:outline-none focus:ring-0 focus:border-orange-600 text-black placeholder-orange-600 mr-2 mb-5 ${additionalClasses}`}
+      className={`bg-transparent border-b border-black focus:outline-none focus:ring-0 focus:border-orange-600 text-black placeholder-orange-600 mr-2 mb-5 ${additionalClasses}`}
       placeholder={placeholder}
+      onFocus={(event) => {
+        event.target.classList.add('px-2');
+        event.target.classList.add('py-1');
+      }}
+      onBlur={(event) => {
+        event.target.classList.remove('px-2');
+        event.target.classList.remove('py-1');
+      }}
       value={value}
       onChange={onChange}
     />
@@ -132,7 +140,7 @@ export default function Cita() {
                   onChange={handleInputChange}
                 />)}
               <button className="rounded mb-5" type="button" onClick={() => setShowLocation(!showLocation)}>
-                {showLocation ? <FaMinus className="text-red-500 hover:text-red-600" /> : <div className="flex items-center text-blue-600 hover:text-blue-500">
+                {showLocation ? <FaMinus className="text-red-500 hover:text-red-600" /> : <div className="flex items-center text-orange-700 hover:text-orange-600">
                   <FaPlus />
                   <span className="ml-1">Add location (optional)</span>
                 </div>}
@@ -176,7 +184,7 @@ export default function Cita() {
               }
               {!showDuration &&
                 <button className="rounded mb-5 mt-2" type="button" onClick={() => setShowDuration(!showDuration)}>
-                  <div className="flex items-center text-blue-600 hover:text-blue-500">
+                  <div className="flex items-center text-orange-700 hover:text-orange-600">
                     <FaPlus />
                     <span className="ml-1">Add duration (optional)</span>
                   </div>
