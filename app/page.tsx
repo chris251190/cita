@@ -5,14 +5,14 @@ import { FaCheck, FaTimes, FaEye, FaCalendar } from 'react-icons/fa';
 import Image from 'next/image';
 
 interface Appointment {
-  name: string;
+  title: string;
   location: string;
   selectedDate: string;
   selectedTime: string;
 }
 
 export default function Home() {
-  const [name, setName] = useState('');
+  const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [selectedTime, setSelectedTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
@@ -22,8 +22,8 @@ export default function Home() {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     switch (name) {
-      case 'name':
-        setName(value);
+      case 'title':
+        setTitle(value);
         break;
       case 'date':
         setSelectedDate(value);
@@ -40,7 +40,7 @@ export default function Home() {
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newAppointment: Appointment = { name, location, selectedDate, selectedTime };
+    const newAppointment: Appointment = { title, location, selectedDate, selectedTime };
     setAppointments(prevAppointments => [...prevAppointments, newAppointment]);
     setShowQRCodeIndex(appointments.length);
   };
@@ -61,7 +61,7 @@ export default function Home() {
 
     const params = {
       action: 'TEMPLATE',
-      text: appointment.name,
+      text: appointment.title,
       dates: `${formatISODate(startDate)}/${formatISODate(endDate)}`,
       location: appointment.location,
       details: 'Created via QR Code on Cita',
@@ -84,10 +84,10 @@ export default function Home() {
           <form onSubmit={handleFormSubmit}>
             <input
               type="text"
-              name="name"
+              name="title"
               className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
               placeholder="Title"
-              value={name}
+              value={title}
               onChange={handleInputChange}
             />
             <input
@@ -127,7 +127,7 @@ export default function Home() {
 
         {appointments.map((appointment, index) => (
           <div key={index} className="flex items-center">
-            <p className='mr-5 mt-3 mb-3'>{appointment.name}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime}</p>
+            <p className='mr-5 mt-3 mb-3'>{appointment.title}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime}</p>
 
             {showQRCodeIndex === index && (
               <QRCode
