@@ -203,7 +203,7 @@ export default function Cita() {
             {appointment.location && (<p>Where: {appointment.location} h</p>)}
             <p>Date: {new Date(appointment.selectedDate).toLocaleDateString()}</p>
             <p>When: {appointment.selectedTime} h</p>
-            <p>Duration: {appointment.selectedDuration} h</p>
+            <p>Duration: {appointment.selectedDuration ? appointment.selectedDuration.replace(/^0/, '') : ''} h</p>
 
             {showQRCodeIndex === index && (
               <QRCode
