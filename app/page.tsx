@@ -93,7 +93,7 @@ export default function Cita() {
   };
 
   return (
-    <main className="">
+    <main className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-repeat-x bg-cover h-screen">
       <Image className="mb-20" src="/Cita.png" alt="Logo" width={300} height={300} />
 
       <div className=''>
