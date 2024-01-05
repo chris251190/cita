@@ -71,7 +71,7 @@ export default function Cita() {
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newAppointment: Appointment = { title, location, selectedDate, selectedTime };
+    const newAppointment: Appointment = { title, location, selectedDate, selectedTime , selectedDuration};
     setAppointments(prevAppointments => [...prevAppointments, newAppointment]);
     setShowQRCodeIndex(0);
   };
@@ -192,7 +192,7 @@ export default function Cita() {
             {appointment.location && (<p>Where: {appointment.location} h</p>)}
             <p>Date: {new Date(appointment.selectedDate).toLocaleDateString()}</p>
             <p>When: {appointment.selectedTime} h</p>
-            {appointment.location && (<p>Duration: {appointment.selectedDuration} h</p>)}
+            <p>Duration: {appointment.selectedDuration} h</p>
 
             {showQRCodeIndex === index && (
               <QRCode
