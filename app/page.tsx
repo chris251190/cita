@@ -165,7 +165,10 @@ export default function Cita() {
                       value={selectedDuration}
                       onChange={handleInputChange}
                     />
-                    <button className="font-bold rounded mb-5 ml-2" type="button" onClick={() => setShowDuration(!showDuration)}>
+                    <button className="font-bold rounded mb-5 ml-2" type="button" onClick={() => {
+                      setShowDuration(!showDuration);
+                      setSelectedDuration('01:00');
+                    }}>
                       <FaMinus className="text-red-500 hover:text-red-600" />
                     </button>
                   </div>
