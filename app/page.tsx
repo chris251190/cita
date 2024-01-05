@@ -94,7 +94,7 @@ export default function Cita() {
   };
 
   return (
-    <main className="flex flex-col items-center bg-gradient-to-r from-yellow-500 to-orange-500 bg-repeat-x bg-cover h-screen">
+    <main className="flex flex-col items-center bg-gradient-to-r from-yellow-500 to-orange-500 bg-repeat-x bg-cover min-h-screen">
       <div className="w-full flex justify-center">
         <Image src="/Cita.png" alt="Logo" width={200} height={200} />
       </div>
