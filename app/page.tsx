@@ -101,7 +101,7 @@ export default function Cita() {
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-2xl font-bold">Next Appointment:</h1>
         <div>
-          <form onSubmit={handleFormSubmit}>
+        <form className="flex flex-col items-center justify-center" onSubmit={handleFormSubmit}>
             <InputField
               type="text"
               name="title"
@@ -118,7 +118,7 @@ export default function Cita() {
                 value={location}
                 onChange={handleInputChange}
               />)}
-            <button className="font-bold text-blue-600 rounded mr-2" type="button" onClick={() => setShowLocation(!showLocation)}>
+            <button className="font-bold text-blue-600 rounded mr-2 mb-5" type="button" onClick={() => setShowLocation(!showLocation)}>
               {showLocation ? <FaMinus className="text-blue-600" /> : <div className="flex items-center">
                 <FaPlus className="text-blue-600" />
                 <span className="ml-2">Add location</span>
