@@ -110,20 +110,22 @@ export default function Cita() {
               onChange={handleInputChange}
             />
 
-            {showLocation && (
-              <InputField
-                type="text"
-                name="location"
-                placeholder="Location"
-                value={location}
-                onChange={handleInputChange}
-              />)}
-            <button className="font-bold text-blue-600 rounded mr-2 mb-5" type="button" onClick={() => setShowLocation(!showLocation)}>
-              {showLocation ? <FaMinus className="text-blue-600" /> : <div className="flex items-center">
-                <FaPlus className="text-blue-600" />
-                <span className="ml-2">Add location</span>
-              </div>}
-            </button>
+            <div className="flex items-center">
+              {showLocation && (
+                <InputField
+                  type="text"
+                  name="location"
+                  placeholder="Location"
+                  value={location}
+                  onChange={handleInputChange}
+                />)}
+              <button className="font-bold rounded mb-5" type="button" onClick={() => setShowLocation(!showLocation)}>
+                {showLocation ? <FaMinus className="text-red-500 hover:text-red-600" /> : <div className="flex items-center text-blue-600 hover:text-blue-500">
+                  <FaPlus />
+                  <span className="ml-1">Add location</span>
+                </div>}
+              </button>
+            </div>
             <InputField
               type="date"
               name="selectedDate"
