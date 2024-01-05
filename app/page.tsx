@@ -30,7 +30,7 @@ const InputField: React.FC<InputFieldProps> = ({ type, name, placeholder, value,
   />
 );
 
-export default function Home() {
+export default function Cita() {
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
