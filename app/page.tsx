@@ -1,7 +1,7 @@
 "use client";
 import QRCode from 'qrcode.react';
 import React, { useState } from 'react';
-import { FaCheck, FaTimes, FaEye, FaCalendar, FaPlus, FaMinus } from 'react-icons/fa';
+import { FaTimes, FaEye, FaCalendar, FaPlus, FaMinus, FaQrcode } from 'react-icons/fa';
 import Image from 'next/image';
 
 interface Appointment {
@@ -124,18 +124,18 @@ export default function Cita() {
               <button className="font-bold rounded mb-5" type="button" onClick={() => setShowLocation(!showLocation)}>
                 {showLocation ? <FaMinus className="text-red-500 hover:text-red-600" /> : <div className="flex items-center text-blue-600 hover:text-blue-500">
                   <FaPlus />
-                  <span className="ml-1">Add location</span>
+                  <span className="ml-1">Add location (optional)</span>
                 </div>}
               </button>
             </div>
-            <h2 className="font-bold">When:</h2>
+            <h2 className="font-bold">Date:</h2>
             <InputField
               type="date"
               name="selectedDate"
               value={selectedDate}
               onChange={handleInputChange}
             />
-            <h2 className="font-bold">Start time:</h2>
+            <h2 className="font-bold">When:</h2>
             <InputField
               type="time"
               name="selectedTime"
@@ -146,7 +146,8 @@ export default function Cita() {
               type="submit"
               className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-5"
             >
-              <FaCheck />
+              <div className='flex items-center'><p className='mr-2'>Create Appointment</p> <FaQrcode /></div>
+             
             </button>
           </form>
         </div>
@@ -159,9 +160,10 @@ export default function Cita() {
 
         {[...appointments].reverse().map((appointment, index) => (
           <div key={index} className="mb-10 flex flex-col items-center justify-center font-bold">
-            <p>{appointment.title ? appointment.title : 'Untitled'}</p>
+            <p>{appointment.title ? appointment.title : ''}</p>
+            {appointment.location && (<p>Where: {appointment.location} h</p>)}
             <p>Date: {new Date(appointment.selectedDate).toLocaleDateString()}</p> 
-            <p>Start time: {appointment.selectedTime} h</p>
+            <p>When: {appointment.selectedTime} h</p>
 
             {showQRCodeIndex === index && (
               <QRCode
