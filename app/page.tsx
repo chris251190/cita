@@ -28,16 +28,8 @@ const InputField: React.FC<InputFieldProps> = ({ type, name, placeholder, value,
     <input
       type={type}
       name={name}
-      className={`bg-transparent border-b border-black focus:outline-none focus:ring-0 focus:border-orange-600 hover:border-orange-600 text-black placeholder-orange-600 mr-2 mb-5 ${additionalClasses}`}
+      className={`bg-transparent border-b border-black focus:outline-none focus:ring-0 focus:border-orange-600 hover:border-orange-600 hover:text-lg text-black placeholder-orange-600 mr-2 mb-5 ${additionalClasses}`}
       placeholder={placeholder}
-      onFocus={(event) => {
-        event.target.classList.add('px-2');
-        event.target.classList.add('py-1');
-      }}
-      onBlur={(event) => {
-        event.target.classList.remove('px-2');
-        event.target.classList.remove('py-1');
-      }}
       value={value}
       onChange={onChange}
     />
