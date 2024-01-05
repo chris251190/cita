@@ -150,12 +150,12 @@ export default function Cita() {
         <h1 className="text-2xl font-bold">Recent Appointments:</h1>
 
         {appointments.map((appointment, index) => (
-          <div key={index} className="">
-            <p className='mr-5 mt-3 mb-3'><b>{appointment.title? appointment.title : 'untitled'}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime}</b></p>
+          <div key={index} className="mb-10">
+            <p className='mt-3 mb-3'><b>{appointment.title? appointment.title : 'no title'}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime} h</b></p>
 
             {showQRCodeIndex === index && (
               <QRCode
-                className="mr-5 mt-5 mb-5"
+                className="mb-3"
                 value={formatGoogleCalendarURL(appointment)}
               />
             )}
