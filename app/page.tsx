@@ -9,6 +9,7 @@ interface Appointment {
   location: string;
   selectedDate: string;
   selectedTime: string;
+  selectedDuration?: string;
 }
 
 type InputFieldProps = {
@@ -36,9 +37,11 @@ export default function Cita() {
   const [location, setLocation] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [selectedTime, setSelectedTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+  const [selectedDuration, setSelectedDuration] = useState('01:00');
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [showQRCodeIndex, setShowQRCodeIndex] = useState<number | null>(null);
   const [showLocation, setShowLocation] = useState(false);
+  const [showDuration, setShowDuration] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -51,6 +54,9 @@ export default function Cita() {
         break;
       case 'selectedTime':
         setSelectedTime(value);
+        break;
+      case 'selectedDuration':
+        setSelectedDuration(value);
         break;
       case 'location':
         setLocation(value);
@@ -142,12 +148,33 @@ export default function Cita() {
               value={selectedTime}
               onChange={handleInputChange}
             />
+
+            <div className="flex items-center">
+              {showDuration &&
+                (<div><h2 className="font-bold">Duration:</h2>
+                  <InputField
+                    type="time"
+                    additionalClasses="ml-4"
+                    name="selectedDuration"
+                    value={selectedDuration}
+                    onChange={handleInputChange}
+                  />
+
+                </div>)}
+              <button className="font-bold rounded mb-5" type="button" onClick={() => setShowDuration(!showDuration)}>
+                {showDuration ? <FaMinus className="text-red-500 hover:text-red-600" /> : <div className="flex items-center text-blue-600 hover:text-blue-500">
+                  <FaPlus />
+                  <span className="ml-1">Add duration (optional)</span>
+                </div>}
+              </button>
+            </div>
+
             <button
               type="submit"
               className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-5"
             >
               <div className='flex items-center'><p className='mr-2'>Create Appointment</p> <FaQrcode /></div>
-             
+
             </button>
           </form>
         </div>
@@ -162,8 +189,9 @@ export default function Cita() {
           <div key={index} className="mb-10 flex flex-col items-center justify-center font-bold">
             <p>{appointment.title ? appointment.title : ''}</p>
             {appointment.location && (<p>Where: {appointment.location} h</p>)}
-            <p>Date: {new Date(appointment.selectedDate).toLocaleDateString()}</p> 
+            <p>Date: {new Date(appointment.selectedDate).toLocaleDateString()}</p>
             <p>When: {appointment.selectedTime} h</p>
+            {appointment.location && (<p>Duration: {appointment.selectedDuration} h</p>)}
 
             {showQRCodeIndex === index && (
               <QRCode
@@ -191,7 +219,7 @@ export default function Cita() {
                 className="text-red-500 hover:text-red-700 font-bold py-1 rounded"
                 onClick={() => handleRemoveAppointment(index)}
               >
-                <FaTimes size={25}/>
+                <FaTimes size={25} />
               </button>
             </div>
 
