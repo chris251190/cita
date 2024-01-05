@@ -154,16 +154,18 @@ export default function Cita() {
 
       <div>
         {showQRCodeIndex !== null && (
-          <h1 className="text-2xl font-bold">Recent Appointments:</h1>
+          <h1 className="text-2xl font-bold mb-5">Recent Appointments:</h1>
         )}
 
         {[...appointments].reverse().map((appointment, index) => (
-          <div key={index} className="mb-10 flex flex-col items-center justify-center">
-            <p className='mt-3 mb-3'><b>{appointment.title ? appointment.title : 'no title'}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime} h</b></p>
+          <div key={index} className="mb-10 flex flex-col items-center justify-center font-bold">
+            <p>{appointment.title ? appointment.title : 'Untitled'}</p>
+            <p>Date: {new Date(appointment.selectedDate).toLocaleDateString()}</p> 
+            <p>Start time: {appointment.selectedTime} h</p>
 
             {showQRCodeIndex === index && (
               <QRCode
-                className="mb-3"
+                className="mt-3 mb-3"
                 value={formatGoogleCalendarURL(appointment)}
               />
             )}
