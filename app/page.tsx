@@ -94,10 +94,11 @@ export default function Cita() {
   };
 
   return (
-    <main className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-repeat-x bg-cover h-screen">
-      <Image src="/Cita.png" alt="Logo" width={200} height={200} />
-
-      <div>
+    <main className="flex flex-col items-center bg-gradient-to-r from-yellow-500 to-orange-500 bg-repeat-x bg-cover h-screen">
+      <div className="w-full flex justify-center">
+        <Image src="/Cita.png" alt="Logo" width={200} height={200} />
+      </div>
+      <div className="flex flex-col items-center justify-center">
         <h1 className="text-2xl font-bold">Next Appointment:</h1>
         <div>
           <form onSubmit={handleFormSubmit}>
