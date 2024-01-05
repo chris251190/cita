@@ -12,6 +12,7 @@ interface Appointment {
 }
 
 type InputFieldProps = {
+  additionalClasses?: string;
   type: string;
   name: string;
   placeholder?: string;
@@ -19,11 +20,11 @@ type InputFieldProps = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const InputField: React.FC<InputFieldProps> = ({ type, name, placeholder, value, onChange }) => (
+const InputField: React.FC<InputFieldProps> = ({ type, name, placeholder, value, onChange, additionalClasses }) => (
   <input
     type={type}
     name={name}
-    className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
+    className={`border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5 ${additionalClasses}`}
     placeholder={placeholder}
     value={value}
     onChange={onChange}
@@ -113,6 +114,7 @@ export default function Cita() {
             <div className="flex items-center">
               {showLocation && (
                 <InputField
+                  additionalClasses="ml-4"
                   type="text"
                   name="location"
                   placeholder="Location"
