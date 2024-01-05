@@ -24,7 +24,7 @@ type InputFieldProps = {
 
 const InputField: React.FC<InputFieldProps> = ({ type, name, placeholder, value, onChange, additionalClasses, title }) => (
   <>
-    {title && <label className="font-bold mb-1"> {title}</label>}
+    {title && <label className="font-bold mb-1">{title}</label>}
     <input
       type={type}
       name={name}
