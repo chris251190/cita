@@ -71,7 +71,7 @@ export default function Cita() {
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newAppointment: Appointment = { title, location, selectedDate, selectedTime , selectedDuration};
+    const newAppointment: Appointment = { title, location, selectedDate, selectedTime, selectedDuration };
     setAppointments(prevAppointments => [...prevAppointments, newAppointment]);
     setShowQRCodeIndex(0);
   };
@@ -153,24 +153,33 @@ export default function Cita() {
               onChange={handleInputChange}
             />
 
-            <div className="flex items-center">
+            <div className="flex flex-col items-center">
               {showDuration &&
-                <InputField
-                  title="Duration:"
-                  type="time"
-                  additionalClasses="ml-4"
-                  name="selectedDuration"
-                  value={selectedDuration}
-                  onChange={handleInputChange}
-                />}
-              <button className="font-bold rounded mb-5" type="button" onClick={() => setShowDuration(!showDuration)}>
-                {showDuration ? <FaMinus className="text-red-500 hover:text-red-600" /> : <div className="flex items-center text-blue-600 hover:text-blue-500">
-                  <FaPlus />
-                  <span className="ml-1">Add duration (optional)</span>
-                </div>}
-              </button>
+                <>
+                  <label className="font-bold mb-2">Duration:</label>
+                  <div className="flex items-center">
+                    <InputField
+                      type="time"
+                      additionalClasses="ml-4"
+                      name="selectedDuration"
+                      value={selectedDuration}
+                      onChange={handleInputChange}
+                    />
+                    <button className="font-bold rounded mb-5 ml-2" type="button" onClick={() => setShowDuration(!showDuration)}>
+                      <FaMinus className="text-red-500 hover:text-red-600" />
+                    </button>
+                  </div>
+                </>
+              }
+              {!showDuration &&
+                <button className="font-bold rounded mb-5 mt-2" type="button" onClick={() => setShowDuration(!showDuration)}>
+                  <div className="flex items-center text-blue-600 hover:text-blue-500">
+                    <FaPlus />
+                    <span className="ml-1">Add duration (optional)</span>
+                  </div>
+                </button>
+              }
             </div>
-
             <button
               type="submit"
               className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-5">
