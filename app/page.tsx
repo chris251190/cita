@@ -93,13 +93,13 @@ export default function Cita() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col p-12">
+    <main className="">
       <Image className="mb-20" src="/Cita.png" alt="Logo" width={300} height={300} />
 
-      <div className='flex flex-col items-center justify-center'>
+      <div className=''>
 
         <h1 className="text-2xl font-bold">Next Appointment:</h1>
-        <div className="flex m-5">
+        <div className="">
           <form onSubmit={handleFormSubmit}>
             <InputField
               type="text"
@@ -137,11 +137,11 @@ export default function Cita() {
         </div>
       </div>
 
-      <div className='flex flex-col items-center'>
+      <div className=''>
         <h1 className="text-2xl font-bold">Recent Appointments:</h1>
 
         {appointments.map((appointment, index) => (
-          <div key={index} className="flex items-center">
+          <div key={index} className="">
             <p className='mr-5 mt-3 mb-3'>{appointment.title}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime}</p>
 
             {showQRCodeIndex === index && (
