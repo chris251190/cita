@@ -28,7 +28,7 @@ const InputField: React.FC<InputFieldProps> = ({ type, name, placeholder, value,
     <input
       type={type}
       name={name}
-      className={`bg-transparent border-b border-black focus:outline-none focus:ring-0 focus:border-orange-600 text-black placeholder-orange-600 mr-2 mb-5 ${additionalClasses}`}
+      className={`bg-transparent border-b border-black focus:outline-none focus:ring-0 focus:border-orange-600 hover:border-orange-600 text-black placeholder-orange-600 mr-2 mb-5 ${additionalClasses}`}
       placeholder={placeholder}
       onFocus={(event) => {
         event.target.classList.add('px-2');
@@ -142,7 +142,7 @@ export default function Cita() {
               <button className="rounded mb-5" type="button" onClick={() => setShowLocation(!showLocation)}>
                 {showLocation ? <FaMinus className="text-red-500 hover:text-red-600" /> : <div className="flex items-center text-orange-700 hover:text-orange-600">
                   <FaPlus />
-                  <span className="ml-1">Add location (optional)</span>
+                  <span className="ml-1 hover:text-lg">Add location (optional)</span>
                 </div>}
               </button>
             </div>
@@ -186,7 +186,7 @@ export default function Cita() {
                 <button className="rounded mb-5 mt-2" type="button" onClick={() => setShowDuration(!showDuration)}>
                   <div className="flex items-center text-orange-700 hover:text-orange-600">
                     <FaPlus />
-                    <span className="ml-1">Add duration (optional)</span>
+                    <span className="ml-1 hover:text-lg">Add duration (optional)</span>
                   </div>
                 </button>
               }
@@ -194,7 +194,7 @@ export default function Cita() {
             <button
               type="submit"
               className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-5">
-              <div className='flex items-center'><p className='mr-2'>Create Appointment</p> <FaQrcode /></div>
+              <div className='flex items-center'><p className='mr-2 hover:text-lg'>Create Appointment</p> <FaQrcode /></div>
             </button>
           </form>
         </div>
