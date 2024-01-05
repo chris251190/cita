@@ -184,7 +184,6 @@ export default function Cita() {
               type="submit"
               className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-5">
               <div className='flex items-center'><p className='mr-2'>Create Appointment</p> <FaQrcode /></div>
-
             </button>
           </form>
         </div>
