@@ -95,12 +95,11 @@ export default function Cita() {
 
   return (
     <main className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-repeat-x bg-cover h-screen">
-      <Image className="mb-20" src="/Cita.png" alt="Logo" width={200} height={200} />
+      <Image src="/Cita.png" alt="Logo" width={200} height={200} />
 
-      <div className=''>
-
+      <div>
         <h1 className="text-2xl font-bold">Next Appointment:</h1>
-        <div className="">
+        <div>
           <form onSubmit={handleFormSubmit}>
             <InputField
               type="text"
@@ -146,7 +145,7 @@ export default function Cita() {
         </div>
       </div>
 
-      <div className=''>
+      <div>
         <h1 className="text-2xl font-bold">Recent Appointments:</h1>
 
         {appointments.map((appointment, index) => (
