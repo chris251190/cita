@@ -101,7 +101,7 @@ export default function Cita() {
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-2xl font-bold mb-5">Next Appointment:</h1>
         <div>
-        <form className="flex flex-col items-center justify-center" onSubmit={handleFormSubmit}>
+          <form className="flex flex-col items-center justify-center" onSubmit={handleFormSubmit}>
             <InputField
               type="text"
               name="title"
@@ -150,8 +150,8 @@ export default function Cita() {
         <h1 className="text-2xl font-bold">Recent Appointments:</h1>
 
         {appointments.map((appointment, index) => (
-          <div key={index} className="mb-10">
-            <p className='mt-3 mb-3'><b>{appointment.title? appointment.title : 'no title'}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime} h</b></p>
+          <div key={index} className="mb-10 flex flex-col items-center justify-center">
+            <p className='mt-3 mb-3'><b>{appointment.title ? appointment.title : 'no title'}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime} h</b></p>
 
             {showQRCodeIndex === index && (
               <QRCode
@@ -159,26 +159,29 @@ export default function Cita() {
                 value={formatGoogleCalendarURL(appointment)}
               />
             )}
-            <button
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded mr-3"
-              onClick={() => handleToggleQRCode(index)}
-            >
-              <FaEye />
-            </button>
 
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-7"
-              onClick={() => window.open(formatGoogleCalendarURL(appointment), '_blank')}
-            >
-              <FaCalendar />
-            </button>
+            <div>
+              <button
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded mr-3"
+                onClick={() => handleToggleQRCode(index)}
+              >
+                <FaEye />
+              </button>
 
-            <button
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
-              onClick={() => handleRemoveAppointment(index)}
-            >
-              <FaTimes />
-            </button>
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-7"
+                onClick={() => window.open(formatGoogleCalendarURL(appointment), '_blank')}
+              >
+                <FaCalendar />
+              </button>
+
+              <button
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+                onClick={() => handleRemoveAppointment(index)}
+              >
+                <FaTimes />
+              </button>
+            </div>
 
           </div>
         ))}
