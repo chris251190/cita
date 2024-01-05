@@ -1,7 +1,7 @@
 "use client";
 import QRCode from 'qrcode.react';
 import React, { useState } from 'react';
-import { FaCheck, FaTimes, FaEye, FaCalendar } from 'react-icons/fa';
+import { FaCheck, FaTimes, FaEye, FaCalendar, FaPlus, FaMinus } from 'react-icons/fa';
 import Image from 'next/image';
 
 interface Appointment {
@@ -37,6 +37,7 @@ export default function Cita() {
   const [selectedTime, setSelectedTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [showQRCodeIndex, setShowQRCodeIndex] = useState<number | null>(null);
+  const [showLocation, setShowLocation] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -108,13 +109,18 @@ export default function Cita() {
               value={title}
               onChange={handleInputChange}
             />
-            <InputField
-              type="text"
-              name="location"
-              placeholder="Location"
-              value={location}
-              onChange={handleInputChange}
-            />
+
+            {showLocation && (
+              <InputField
+                type="text"
+                name="location"
+                placeholder="Location"
+                value={location}
+                onChange={handleInputChange}
+              />)}
+            <button className="bg-blue-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mr-2" type="button" onClick={() => setShowLocation(!showLocation)}>
+              {showLocation ? <FaMinus /> : <FaPlus />}
+            </button>
             <InputField
               type="date"
               name="selectedDate"
