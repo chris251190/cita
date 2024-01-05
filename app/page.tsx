@@ -88,8 +88,8 @@ export default function Cita() {
     const formatISODate = (date: Date) => date.toISOString().replace(/-|:|\.\d\d\d/g, '');
 
     const startDate = new Date(appointment.selectedDate + 'T' + appointment.selectedTime);
-    const endDate = new Date(startDate.getTime() + 60 * 60 * 1000);
-
+    const [hours, minutes] = selectedDuration.split(':');
+    const endDate = new Date(startDate.getTime() + (parseInt(hours) * 60 + parseInt(minutes)) * 60 * 1000);
     const params = {
       action: 'TEMPLATE',
       text: appointment.title,
