@@ -118,8 +118,11 @@ export default function Cita() {
                 value={location}
                 onChange={handleInputChange}
               />)}
-            <button className="bg-blue-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mr-2" type="button" onClick={() => setShowLocation(!showLocation)}>
-              {showLocation ? <FaMinus /> : <FaPlus />}
+            <button className="font-bold text-blue-600 rounded mr-2" type="button" onClick={() => setShowLocation(!showLocation)}>
+              {showLocation ? <FaMinus className="text-blue-600" /> : <div className="flex items-center">
+                <FaPlus className="text-blue-600" />
+                <span className="ml-2">Add location</span>
+              </div>}
             </button>
             <InputField
               type="date"
