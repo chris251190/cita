@@ -201,9 +201,9 @@ export default function Cita() {
         {[...appointments].reverse().map((appointment, index) => (
           <div key={index} className="mb-10 flex flex-col items-center justify-center font-bold">
             <p>{appointment.title ? appointment.title : ''}</p>
-            {appointment.location && (<p>Where: {appointment.location} h</p>)}
+            {appointment.location && (<p>Where: {appointment.location}</p>)}
             <p>Date: {new Date(appointment.selectedDate).toLocaleDateString()}</p>
-            <p>When: {appointment.selectedTime} h</p>
+            <p>When: {appointment.selectedTime}</p>
             <p>Duration: {appointment.selectedDuration ? appointment.selectedDuration.replace(/^0/, '') : ''} h</p>
 
             {showQRCodeIndex === index && (
