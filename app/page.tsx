@@ -13,6 +13,7 @@ interface Appointment {
 }
 
 type InputFieldProps = {
+  title?: string;
   additionalClasses?: string;
   type: string;
   name: string;
@@ -21,15 +22,18 @@ type InputFieldProps = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const InputField: React.FC<InputFieldProps> = ({ type, name, placeholder, value, onChange, additionalClasses }) => (
-  <input
-    type={type}
-    name={name}
-    className={`border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5 ${additionalClasses}`}
-    placeholder={placeholder}
-    value={value}
-    onChange={onChange}
-  />
+const InputField: React.FC<InputFieldProps> = ({ type, name, placeholder, value, onChange, additionalClasses, title }) => (
+  <>
+    {title && <h2 className="font-bold">{title}</h2>}
+    <input
+      type={type}
+      name={name}
+      className={`border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5 ${additionalClasses}`}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+    />
+  </>
 );
 
 export default function Cita() {
@@ -134,8 +138,8 @@ export default function Cita() {
                 </div>}
               </button>
             </div>
-            <h2 className="font-bold">Date:</h2>
             <InputField
+              title='Date:'
               type="date"
               name="selectedDate"
               value={selectedDate}
@@ -151,16 +155,14 @@ export default function Cita() {
 
             <div className="flex items-center">
               {showDuration &&
-                (<div><h2 className="font-bold">Duration:</h2>
-                  <InputField
-                    type="time"
-                    additionalClasses="ml-4"
-                    name="selectedDuration"
-                    value={selectedDuration}
-                    onChange={handleInputChange}
-                  />
-
-                </div>)}
+                <InputField
+                  title="Duration:"
+                  type="time"
+                  additionalClasses="ml-4"
+                  name="selectedDuration"
+                  value={selectedDuration}
+                  onChange={handleInputChange}
+                />}
               <button className="font-bold rounded mb-5" type="button" onClick={() => setShowDuration(!showDuration)}>
                 {showDuration ? <FaMinus className="text-red-500 hover:text-red-600" /> : <div className="flex items-center text-blue-600 hover:text-blue-500">
                   <FaPlus />
