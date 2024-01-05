@@ -99,7 +99,7 @@ export default function Cita() {
         <Image src="/Cita.png" alt="Logo" width={200} height={200} />
       </div>
       <div className="flex flex-col items-center justify-center">
-        <h1 className="text-2xl font-bold">Next Appointment:</h1>
+        <h1 className="text-2xl font-bold mb-5">Next Appointment:</h1>
         <div>
         <form className="flex flex-col items-center justify-center" onSubmit={handleFormSubmit}>
             <InputField
@@ -138,7 +138,7 @@ export default function Cita() {
             />
             <button
               type="submit"
-              className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-5"
             >
               <FaCheck />
             </button>
@@ -151,7 +151,7 @@ export default function Cita() {
 
         {appointments.map((appointment, index) => (
           <div key={index} className="">
-            <p className='mr-5 mt-3 mb-3'>{appointment.title}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime}</p>
+            <p className='mr-5 mt-3 mb-3'><b>{appointment.title? appointment.title : 'untitled'}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime}</b></p>
 
             {showQRCodeIndex === index && (
               <QRCode
