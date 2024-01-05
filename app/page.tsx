@@ -24,7 +24,7 @@ type InputFieldProps = {
 
 const InputField: React.FC<InputFieldProps> = ({ type, name, placeholder, value, onChange, additionalClasses, title }) => (
   <>
-    {title && <h2 className="font-bold">{title}</h2>}
+    {title && <label className="font-bold mb-1"> {title}</label>}
     <input
       type={type}
       name={name}
@@ -145,8 +145,8 @@ export default function Cita() {
               value={selectedDate}
               onChange={handleInputChange}
             />
-            <h2 className="font-bold">When:</h2>
             <InputField
+              title='When:'
               type="time"
               name="selectedTime"
               value={selectedTime}
@@ -173,8 +173,7 @@ export default function Cita() {
 
             <button
               type="submit"
-              className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-5"
-            >
+              className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-5">
               <div className='flex items-center'><p className='mr-2'>Create Appointment</p> <FaQrcode /></div>
 
             </button>
