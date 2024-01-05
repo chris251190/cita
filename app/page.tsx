@@ -11,6 +11,25 @@ interface Appointment {
   selectedTime: string;
 }
 
+type InputFieldProps = {
+  type: string;
+  name: string;
+  placeholder?: string;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+const InputField: React.FC<InputFieldProps> = ({ type, name, placeholder, value, onChange }) => (
+  <input
+    type={type}
+    name={name}
+    className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
+    placeholder={placeholder}
+    value={value}
+    onChange={onChange}
+  />
+);
+
 export default function Home() {
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
@@ -25,10 +44,10 @@ export default function Home() {
       case 'title':
         setTitle(value);
         break;
-      case 'date':
+      case 'selectedDate':
         setSelectedDate(value);
         break;
-      case 'time':
+      case 'selectedTime':
         setSelectedTime(value);
         break;
       case 'location':
@@ -82,33 +101,29 @@ export default function Home() {
         <h1 className="text-2xl font-bold">Next Appointment:</h1>
         <div className="flex m-5">
           <form onSubmit={handleFormSubmit}>
-            <input
+            <InputField
               type="text"
               name="title"
-              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
               placeholder="Title"
               value={title}
               onChange={handleInputChange}
             />
-            <input
+            <InputField
               type="text"
               name="location"
-              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
               placeholder="Location"
               value={location}
               onChange={handleInputChange}
             />
-            <input
+            <InputField
               type="date"
-              name="date"
-              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
+              name="selectedDate"
               value={selectedDate}
               onChange={handleInputChange}
             />
-            <input
+            <InputField
               type="time"
-              name="time"
-              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-black mr-2 mb-5"
+              name="selectedTime"
               value={selectedTime}
               onChange={handleInputChange}
             />
