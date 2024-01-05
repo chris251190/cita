@@ -28,7 +28,7 @@ const InputField: React.FC<InputFieldProps> = ({ type, name, placeholder, value,
     <input
       type={type}
       name={name}
-      className={`bg-transparent border-b border-black px-4 py-2 focus:outline-none focus:ring-0 focus:border-orange-600 text-black placeholder-orange-500 mr-2 mb-5 ${additionalClasses}`}
+      className={`bg-transparent border-b border-black px-1 focus:outline-none focus:ring-0 focus:border-orange-600 text-black placeholder-orange-600 mr-2 mb-5 ${additionalClasses}`}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
@@ -109,7 +109,7 @@ export default function Cita() {
       <div className="w-full flex justify-center">
         <Image src="/Cita.png" alt="Logo" width={200} height={200} />
       </div>
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center mb-10">
         <h1 className="text-2xl font-bold mb-5">Next Appointment:</h1>
         <div>
           <form className="flex flex-col items-center justify-center" onSubmit={handleFormSubmit}>
@@ -131,7 +131,7 @@ export default function Cita() {
                   value={location}
                   onChange={handleInputChange}
                 />)}
-              <button className="font-bold rounded mb-5" type="button" onClick={() => setShowLocation(!showLocation)}>
+              <button className="rounded mb-5" type="button" onClick={() => setShowLocation(!showLocation)}>
                 {showLocation ? <FaMinus className="text-red-500 hover:text-red-600" /> : <div className="flex items-center text-blue-600 hover:text-blue-500">
                   <FaPlus />
                   <span className="ml-1">Add location (optional)</span>
@@ -175,7 +175,7 @@ export default function Cita() {
                 </>
               }
               {!showDuration &&
-                <button className="font-bold rounded mb-5 mt-2" type="button" onClick={() => setShowDuration(!showDuration)}>
+                <button className="rounded mb-5 mt-2" type="button" onClick={() => setShowDuration(!showDuration)}>
                   <div className="flex items-center text-blue-600 hover:text-blue-500">
                     <FaPlus />
                     <span className="ml-1">Add duration (optional)</span>
