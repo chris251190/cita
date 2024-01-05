@@ -152,7 +152,7 @@ export default function Cita() {
         {showQRCodeIndex !== null && (
           <h1 className="text-2xl font-bold">Recent Appointments:</h1>
         )}
-        
+
         {[...appointments].reverse().map((appointment, index) => (
           <div key={index} className="mb-10 flex flex-col items-center justify-center">
             <p className='mt-3 mb-3'><b>{appointment.title ? appointment.title : 'no title'}, {new Date(appointment.selectedDate).toLocaleDateString()} - {appointment.selectedTime} h</b></p>
@@ -164,7 +164,7 @@ export default function Cita() {
               />
             )}
 
-            <div>
+            <div className='flex justify-center items-center'>
               <button
                 className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded mr-3"
                 onClick={() => handleToggleQRCode(index)}
@@ -180,10 +180,10 @@ export default function Cita() {
               </button>
 
               <button
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+                className="text-red-500 hover:text-red-700 font-bold py-1 rounded"
                 onClick={() => handleRemoveAppointment(index)}
               >
-                <FaTimes />
+                <FaTimes size={25}/>
               </button>
             </div>
 
