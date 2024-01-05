@@ -126,12 +126,14 @@ export default function Cita() {
                 </div>}
               </button>
             </div>
+            <h2>When:</h2>
             <InputField
               type="date"
               name="selectedDate"
               value={selectedDate}
               onChange={handleInputChange}
             />
+            <h2>Start time:</h2>
             <InputField
               type="time"
               name="selectedTime"
