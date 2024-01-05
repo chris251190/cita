@@ -195,7 +195,7 @@ export default function Cita() {
 
       <div>
         {showQRCodeIndex !== null && appointments.length > 0 && (
-          <h1 className="text-2xl font-bold mb-5">Recent Appointments:</h1>
+          <h1 className="text-2xl font-bold mb-5">Recently created:</h1>
         )}
 
         {[...appointments].reverse().map((appointment, index) => (
