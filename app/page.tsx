@@ -195,7 +195,7 @@ export default function Cita() {
 
         {[...appointments].reverse().map((appointment, index) => (
           <div key={index} className="mb-10 flex flex-col items-center justify-center">
-            <p className='font-bold'>{appointment.title ? appointment.title : ''}</p>
+            <p className='font-bold text-xl'>{appointment.title ? appointment.title : ''}</p>
             {appointment.location && (<p>Where: {appointment.location}</p>)}
             <p>When: {new Date(appointment.selectedDate).toLocaleDateString()} ({new Date(appointment.selectedDate).toLocaleDateString('en-US', { weekday: 'long' })}) at {appointment.selectedTime} h</p>
             <p>Duration: {appointment.selectedDuration ? appointment.selectedDuration.replace(/^0/, '') : ''} h</p>
