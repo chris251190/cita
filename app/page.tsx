@@ -127,9 +127,9 @@ export default function Cita() {
                   onChange={handleInputChange}
                 />)}
               <button className="rounded mb-5" type="button" onClick={() => setShowLocation(!showLocation)}>
-                {showLocation ? <FaMinus className="text-red-500 hover:text-red-600" /> : <div className="flex items-center text-orange-700 hover:text-orange-600">
+                {showLocation ? <FaMinus className="text-red-500 hover:text-red-600 ml-1 hover:text-lg" /> : <div className="flex items-center text-orange-700 hover:text-orange-600 hover:text-lg">
                   <FaPlus />
-                  <span className="ml-1 hover:text-lg">Add location (optional)</span>
+                  <span className="ml-1">Add location (optional)</span>
                 </div>}
               </button>
             </div>
@@ -164,16 +164,16 @@ export default function Cita() {
                       setShowDuration(!showDuration);
                       setSelectedDuration('01:00');
                     }}>
-                      <FaMinus className="text-red-500 hover:text-red-600" />
+                      <FaMinus className="text-red-500 hover:text-red-600 ml-1 hover:text-lg" />
                     </button>
                   </div>
                 </>
               }
               {!showDuration &&
                 <button className="rounded mb-5 mt-2" type="button" onClick={() => setShowDuration(!showDuration)}>
-                  <div className="flex items-center text-orange-700 hover:text-orange-600">
+                  <div className="flex items-center text-orange-700 hover:text-orange-600 hover:text-lg">
                     <FaPlus />
-                    <span className="ml-1 hover:text-lg">Add duration (optional)</span>
+                    <span className="ml-1">Add duration (optional)</span>
                   </div>
                 </button>
               }
