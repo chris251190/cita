@@ -119,7 +119,7 @@ export default function Cita() {
             <div className="flex items-center">
               {showLocation && (
                 <InputField
-                  additionalClasses="ml-4"
+                  additionalClasses="ml-4 mr-1"
                   type="text"
                   name="location"
                   placeholder="Location"
@@ -127,7 +127,7 @@ export default function Cita() {
                   onChange={handleInputChange}
                 />)}
               <button className="rounded mb-5" type="button" onClick={() => setShowLocation(!showLocation)}>
-                {showLocation ? <FaMinus className="text-red-500 hover:text-red-600 ml-1 hover:text-lg" /> : <div className="flex items-center text-orange-700 hover:text-orange-600 hover:text-lg">
+                {showLocation ? <FaMinus className="text-red-500 hover:text-red-600 hover:text-lg" /> : <div className="flex items-center text-orange-700 hover:text-orange-600 hover:text-lg">
                   <FaPlus />
                   <span className="ml-1">Add location (optional)</span>
                 </div>}
@@ -155,7 +155,7 @@ export default function Cita() {
                   <div className="flex items-center">
                     <InputField
                       type="time"
-                      additionalClasses="ml-4"
+                      additionalClasses="ml-7 mr-1"
                       name="selectedDuration"
                       value={selectedDuration}
                       onChange={handleInputChange}
@@ -164,7 +164,7 @@ export default function Cita() {
                       setShowDuration(!showDuration);
                       setSelectedDuration('01:00');
                     }}>
-                      <FaMinus className="text-red-500 hover:text-red-600 ml-1 hover:text-lg" />
+                      <FaMinus className="text-red-500 hover:text-red-600 hover:text-lg" />
                     </button>
                   </div>
                 </>
