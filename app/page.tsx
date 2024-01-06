@@ -12,7 +12,9 @@ export default function Cita() {
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
 
   const currentHour = new Date().getHours();
-  const [selectedTime, setSelectedTime] = useState(`${currentHour}:00`);
+  const currentMinutes = new Date().getMinutes();
+  const selectedMinutes = currentMinutes < 15 || currentMinutes >= 45 ? '00' : '30';
+  const [selectedTime, setSelectedTime] = useState(`${currentHour}:${selectedMinutes}`);
   
   const [selectedDuration, setSelectedDuration] = useState('01:00');
   const [appointments, setAppointments] = useState<Appointment[]>([]);
