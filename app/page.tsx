@@ -210,7 +210,7 @@ export default function Cita() {
               }
             </div>
 
-            <h2 className="text-xl font-bold mb-5">Change calendar formats:</h2>
+            <h2 className="text-xl font-bold mb-5">Choose calendar formats:</h2>
             <div className="flex items-center mb-10">
               <FaGoogle
                 className={`mr-3 text-4xl cursor-pointer ${isGoogleIconClicked ? '' : 'text-gray-300'}`}
