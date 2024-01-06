@@ -79,15 +79,23 @@ export default function Cita() {
     return url.toString();
   };
 
-  const shareViaWhatsApp = (appointment: Appointment) => {
+  const shareViaWhatsApp = async (appointment: Appointment) => {
     const formattedDate = new Date(appointment.selectedDate).toLocaleDateString('en-GB', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
     });
-    const message = `An appointment was created for you \u{1F389}\u{1F389}\u{1F389}\n\n${appointment.title}\nWhen: ${formattedDate} at ${appointment.selectedTime} h\n\nCreate and share your own appointments on: https://cita-three.vercel.app/ \n\nClick the link to add to your calendar: ${formatGoogleCalendarURL(appointment)}`;
+    const longUrl = formatGoogleCalendarURL(appointment);
+    const shortUrl = await shortenUrl(longUrl);
+    const message = `An appointment was created for you \u{1F389}\u{1F389}\u{1F389}\n\n${appointment.title}\nWhen: ${formattedDate} at ${appointment.selectedTime} h\n\nCreate and share your own appointments on: https://cita-three.vercel.app/ \n\nClick the link to add to your calendar: ${shortUrl}`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
+  };
+
+  const shortenUrl = async (longUrl: string) => {
+    const response = await fetch(`https://tinyurl.com/api-create.php?url=${longUrl}`);
+    const shortUrl = await response.text();
+    return shortUrl;
   };
 
   return (
