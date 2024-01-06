@@ -4,14 +4,8 @@ import React, { useState } from 'react';
 import { FaTimes, FaEye, FaCalendar, FaPlus, FaMinus, FaQrcode } from 'react-icons/fa';
 import Image from 'next/image';
 import InputField from './components/InputField';
+import Appointment from './interfaces/Appointment';
 
-interface Appointment {
-  title: string;
-  location: string;
-  selectedDate: string;
-  selectedTime: string;
-  selectedDuration?: string;
-}
 
 export default function Cita() {
   const [title, setTitle] = useState('');
