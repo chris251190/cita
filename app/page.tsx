@@ -70,7 +70,6 @@ export default function Cita() {
       text: appointment.title,
       dates: `${formatISODate(startDate)}/${formatISODate(endDate)}`,
       location: appointment.location,
-      details: 'Created via QR Code on Cita',
     };
 
     const url = new URL('https://www.google.com/calendar/render');
