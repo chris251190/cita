@@ -6,7 +6,6 @@ import Image from 'next/image';
 import InputField from './components/InputField';
 import Appointment from './interfaces/Appointment';
 
-
 export default function Cita() {
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
