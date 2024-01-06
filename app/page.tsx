@@ -85,7 +85,7 @@ export default function Cita() {
       month: 'long',
       day: 'numeric',
     });
-    const message = `An appointment was created for you \u{1F389}!\n${appointment.title}\nWhen: ${formattedDate} at ${appointment.selectedTime} h\n\n\nClick link to add to your calendar: ${formatGoogleCalendarURL(appointment)}`;
+    const message = `An appointment was created for you \u{1F389}!\n${appointment.title}\nWhen: ${formattedDate} at ${appointment.selectedTime} h\nCreate and share your own appointments on: https://cita-three.vercel.app/ \n\nClick link to add to your calendar: ${formatGoogleCalendarURL(appointment)}`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
