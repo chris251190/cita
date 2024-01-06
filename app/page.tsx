@@ -85,7 +85,7 @@ export default function Cita() {
       month: 'long',
       day: 'numeric',
     });
-    const message = `An appointment was created for you with Cita:\n${appointment.title}\nDate: ${formattedDate}\nTime: ${appointment.selectedTime}\nAdd to your calendar: ${formatGoogleCalendarURL(appointment)}`;
+    const message = `An appointment was created for you with Cita!\n${appointment.title}\nWhen: ${formattedDate} - ${appointment.selectedTime}\nAdd to your calendar: ${formatGoogleCalendarURL(appointment)}`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
