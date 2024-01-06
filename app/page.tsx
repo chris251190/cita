@@ -81,6 +81,7 @@ export default function Cita() {
 
   const shareViaWhatsApp = async (appointment: Appointment) => {
     const formattedDate = new Date(appointment.selectedDate).toLocaleDateString('en-GB', {
+      weekday: 'long',
       year: 'numeric',
       month: 'long',
       day: 'numeric',
