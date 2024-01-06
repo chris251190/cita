@@ -88,7 +88,7 @@ export default function Cita() {
       return;
     }
   
-    return `data:text/calendar;charset=utf8,${encodeURIComponent(value)}`;
+    return `data:text/calendar;charset=utf8,${encodeURIComponent(value || '')}`;
   };
 
   const formatGoogleCalendarURL = (appointment: Appointment) => {
