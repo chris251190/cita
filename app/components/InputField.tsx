@@ -16,7 +16,7 @@ const InputField: React.FC<InputFieldProps> = ({ type, name, placeholder, value,
     <input
       type={type}
       name={name}
-      className={`bg-transparent border-b border-black focus:outline-none focus:ring-0 focus:border-orange-600 hover:border-orange-600 text-black placeholder-orange-600 mb-5 ${additionalClasses} text-center hover:scale-110`}
+      className={`bg-transparent border-b border-black focus:outline-none focus:ring-0 focus:border-orange-700 hover:border-orange-700 text-black placeholder-orange-600 mb-5 ${additionalClasses} text-center hover:scale-110`}
       placeholder={placeholder}
       style={{ width: '150px' }}
       value={value}
