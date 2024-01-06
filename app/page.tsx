@@ -80,7 +80,12 @@ export default function Cita() {
   };
 
   const shareViaWhatsApp = (appointment: Appointment) => {
-    const message = `Here is your appointment details:\nTitle: ${appointment.title}\nDate: ${appointment.selectedDate}\nTime: ${appointment.selectedTime}`;
+    const formattedDate = new Date(appointment.selectedDate).toLocaleDateString('en-GB', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+    const message = `An appointment was created for you with Cita:\n${appointment.title}\nDate: ${formattedDate}\nTime: ${appointment.selectedTime}\nAdd to your calendar: ${formatGoogleCalendarURL(appointment)}`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
