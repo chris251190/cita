@@ -1,7 +1,7 @@
 "use client";
 import QRCode from 'qrcode.react';
 import React, { useState } from 'react';
-import { FaTimes, FaEye, FaCalendar, FaPlus, FaMinus, FaQrcode } from 'react-icons/fa';
+import { FaTimes, FaEye, FaCalendar, FaPlus, FaMinus, FaQrcode, FaWhatsapp } from 'react-icons/fa';
 import Image from 'next/image';
 import InputField from './components/InputField';
 import Appointment from './interfaces/Appointment';
@@ -15,7 +15,7 @@ export default function Cita() {
   const currentMinutes = new Date().getMinutes();
   const selectedMinutes = currentMinutes < 15 || currentMinutes >= 45 ? '00' : '30';
   const [selectedTime, setSelectedTime] = useState(`${currentHour}:${selectedMinutes}`);
-  
+
   const [selectedDuration, setSelectedDuration] = useState('01:00');
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [showQRCodeIndex, setShowQRCodeIndex] = useState<number | null>(null);
@@ -77,6 +77,12 @@ export default function Cita() {
     Object.keys(params).forEach(key => url.searchParams.append(key, (params as any)[key]));
 
     return url.toString();
+  };
+
+  const shareViaWhatsApp = (appointment: Appointment) => {
+    const message = `Here is your appointment details:\nTitle: ${appointment.title}\nDate: ${appointment.selectedDate}\nTime: ${appointment.selectedTime}`;
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -196,10 +202,17 @@ export default function Cita() {
               </button>
 
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-7"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-3"
                 onClick={() => window.open(formatGoogleCalendarURL(appointment), '_blank')}
               >
                 <FaCalendar />
+              </button>
+
+              <button
+                className="text-green-500 hover:text-green-700 font-bold py-1 mr-5"
+                onClick={() => shareViaWhatsApp(appointments[index])}
+              >
+                <FaWhatsapp size={30}/>
               </button>
 
               <button
