@@ -70,6 +70,7 @@ export default function Cita() {
       text: appointment.title,
       dates: `${formatISODate(startDate)}/${formatISODate(endDate)}`,
       location: appointment.location,
+      details: 'Created with https://cita-three.vercel.app/',
     };
 
     const url = new URL('https://www.google.com/calendar/render');
