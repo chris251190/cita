@@ -1,7 +1,7 @@
 "use client";
 import QRCode from 'qrcode.react';
 import React, { useState } from 'react';
-import { FaTimes, FaEye, FaCalendar, FaPlus, FaMinus, FaQrcode, FaWhatsapp } from 'react-icons/fa';
+import { FaTimes, FaEye, FaCalendar, FaPlus, FaMinus, FaQrcode, FaWhatsapp, FaGoogle, FaApple } from 'react-icons/fa';
 import Image from 'next/image';
 import InputField from './components/InputField';
 import Appointment from './interfaces/Appointment';
@@ -21,6 +21,9 @@ export default function Cita() {
   const [showQRCodeIndex, setShowQRCodeIndex] = useState<number | null>(null);
   const [showLocation, setShowLocation] = useState(false);
   const [showDuration, setShowDuration] = useState(false);
+  const [isAppleIconClicked, setIsAppleIconClicked] = useState(false);
+  const [isGoogleIconClicked, setIsGoogleIconClicked] = useState(false);
+
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -177,6 +180,19 @@ export default function Cita() {
                 </button>
               }
             </div>
+
+            <h2 className="text-xl font-bold mb-5">Choose calendar formats:</h2>
+            <div className="flex items-center mb-10">
+              <FaGoogle
+                className={`mr-3 text-4xl cursor-pointer ${isGoogleIconClicked ? 'text-gray-300' : ''}`}
+                onClick={() => setIsGoogleIconClicked(!isGoogleIconClicked)}
+              />
+              <FaApple
+                className={`text-4xl cursor-pointer ${isAppleIconClicked ? 'text-gray-300' : ''}`}
+                onClick={() => setIsAppleIconClicked(!isAppleIconClicked)}
+              />
+            </div>
+
             <button
               type="submit"
               className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-5">
