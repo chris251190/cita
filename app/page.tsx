@@ -5,7 +5,7 @@ import { FaTimes, FaEye, FaCalendar, FaPlus, FaMinus, FaQrcode, FaWhatsapp, FaGo
 import Image from 'next/image';
 import InputField from './components/InputField';
 import Appointment from './interfaces/Appointment';
-//import * as ics from 'ics';
+import * as ics from 'ics';
 
 export default function Cita() {
   const [title, setTitle] = useState('');
@@ -66,7 +66,6 @@ export default function Cita() {
     const [hours, minutes] = selectedDuration.split(':');
     const duration = [parseInt(hours), parseInt(minutes)];
   
-    /*
     const event = {
       start: [
         startDate.getFullYear(),
@@ -90,8 +89,6 @@ export default function Cita() {
     }
   
     return `data:text/calendar;charset=utf8,${encodeURIComponent(value || '')}`;
-    */
-   return '';
   };
 
   const formatGoogleCalendarURL = (appointment: Appointment) => {
