@@ -241,7 +241,9 @@ export default function Cita() {
           </div>
         ))}
       </div>
-      <Link href="/privacy">Privacy</Link>
+      <div>
+        <Link href="/privacy">Privacy</Link> | <Link href="/imprint">Imprint</Link>
+      </div>
     </main>
   );
 }
