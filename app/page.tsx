@@ -189,14 +189,14 @@ export default function Cita() {
 
       <div>
         {showQRCodeIndex !== null && appointments.length > 0 && (
-          <h1 className="text-2xl font-bold mb-5">Recently created:</h1>
+          <h1 className="text-2xl font-bold mb-5 text-center">Recently created:</h1>
         )}
 
         {[...appointments].reverse().map((appointment, index) => (
           <div key={index} className="mb-10 flex flex-col items-center justify-center">
             <p className='font-bold'>{appointment.title ? appointment.title : ''}</p>
             {appointment.location && (<p>Where: {appointment.location}</p>)}
-            <p>When: {new Date(appointment.selectedDate).toLocaleDateString()} at {appointment.selectedTime} h</p>
+            <p>When: {new Date(appointment.selectedDate).toLocaleDateString()} ({new Date(appointment.selectedDate).toLocaleDateString('en-US', { weekday: 'long' })}) at {appointment.selectedTime} h</p>
             <p>Duration: {appointment.selectedDuration ? appointment.selectedDuration.replace(/^0/, '') : ''} h</p>
 
             {showQRCodeIndex === index && (
