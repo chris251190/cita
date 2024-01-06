@@ -1,7 +1,7 @@
 "use client";
 import QRCode from 'qrcode.react';
 import React, { useState } from 'react';
-import { FaTimes, FaEye, FaCalendar, FaPlus, FaMinus, FaQrcode, FaWhatsapp, FaGoogle, FaApple } from 'react-icons/fa';
+import { FaTimes, FaEye, FaCalendar, FaPlus, FaMinus, FaQrcode, FaWhatsapp } from 'react-icons/fa';
 import Image from 'next/image';
 import InputField from './components/InputField';
 import Appointment from './interfaces/Appointment';
