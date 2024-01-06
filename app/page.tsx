@@ -196,8 +196,7 @@ export default function Cita() {
           <div key={index} className="mb-10 flex flex-col items-center justify-center">
             <p className='font-bold'>{appointment.title ? appointment.title : ''}</p>
             {appointment.location && (<p>Where: {appointment.location}</p>)}
-            <p>Date: {new Date(appointment.selectedDate).toLocaleDateString()}</p>
-            <p>When: {appointment.selectedTime}</p>
+            <p>When: {new Date(appointment.selectedDate).toLocaleDateString()} at {appointment.selectedTime} h</p>
             <p>Duration: {appointment.selectedDuration ? appointment.selectedDuration.replace(/^0/, '') : ''} h</p>
 
             {showQRCodeIndex === index && (
