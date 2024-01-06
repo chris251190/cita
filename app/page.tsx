@@ -88,7 +88,7 @@ export default function Cita() {
     });
     const longUrl = formatGoogleCalendarURL(appointment);
     const shortUrl = await shortenUrl(longUrl);
-    const message = `\u{2757}${appointment.title}\n\u{1F551} ${formattedDate} at ${appointment.selectedTime} h\n\nCreate and share your own appointments on: https://cita-three.vercel.app/ \n\nAdd appointment to your calendar \u{1F4C5}: ${shortUrl}`;
+    const message = `\u{2757}${appointment.title}\n\u{1F551} ${formattedDate} at ${appointment.selectedTime} h\n\nCreate and share your own appointments on: https://cita-three.vercel.app/ \n\nAdd appointment to your calendar \u{1F4C5} ${shortUrl}`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
