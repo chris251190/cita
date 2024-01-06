@@ -5,7 +5,6 @@ import { FaTimes, FaEye, FaCalendar, FaPlus, FaMinus, FaQrcode, FaWhatsapp, FaGo
 import Image from 'next/image';
 import InputField from './components/InputField';
 import Appointment from './interfaces/Appointment';
-import * as ics from 'ics';
 
 export default function Cita() {
   const [title, setTitle] = useState('');
@@ -22,7 +21,6 @@ export default function Cita() {
   const [showQRCodeIndex, setShowQRCodeIndex] = useState<number | null>(null);
   const [showLocation, setShowLocation] = useState(false);
   const [showDuration, setShowDuration] = useState(false);
-  const [isGoogleIconClicked, setIsGoogleIconClicked] = useState(true);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -59,36 +57,6 @@ export default function Cita() {
 
   const handleToggleQRCode = (index: number) => {
     setShowQRCodeIndex(prevIndex => (prevIndex === index ? null : index));
-  };
-
-  const formatAppleCalendarURL = (appointment: Appointment) => {
-    const startDate = new Date(appointment.selectedDate + 'T' + appointment.selectedTime);
-    const [hours, minutes] = selectedDuration.split(':');
-    const duration = [parseInt(hours), parseInt(minutes)];
-  
-    const event = {
-      start: [
-        startDate.getFullYear(),
-        startDate.getMonth() + 1,
-        startDate.getDate(),
-        startDate.getHours(),
-        startDate.getMinutes()
-      ],
-      duration: { hours: duration[0], minutes: duration[1] },
-      title: appointment.title,
-      location: appointment.location,
-      description: 'Created with https://cita-three.vercel.app/',
-      url: 'https://cita-three.vercel.app/'
-    };
-  
-    const { error, value } = ics.createEvent(event);
-  
-    if (error) {
-      console.log(error);
-      return;
-    }
-  
-    return `data:text/calendar;charset=utf8,${encodeURIComponent(value!)}`;
   };
 
   const formatGoogleCalendarURL = (appointment: Appointment) => {
@@ -210,18 +178,6 @@ export default function Cita() {
               }
             </div>
 
-            <h2 className="text-xl font-bold mb-5">Choose calendar format:</h2>
-            <div className="flex items-center mb-10">
-              <FaGoogle
-                className={`mr-3 text-4xl cursor-pointer ${isGoogleIconClicked ? '' : 'text-gray-300'}`}
-                onClick={() => setIsGoogleIconClicked(true)}
-              />
-              <FaApple
-                className={`text-4xl cursor-pointer ${isGoogleIconClicked ? 'text-gray-300' : ''}`}
-                onClick={() => setIsGoogleIconClicked(false)}
-              />
-            </div>
-
             <button
               type="submit"
               className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-5">
@@ -247,7 +203,7 @@ export default function Cita() {
             {showQRCodeIndex === index && (
               <QRCode
                 className="mt-3 mb-3"
-                value={isGoogleIconClicked ? formatGoogleCalendarURL(appointment) : formatAppleCalendarURL(appointment)!}
+                value={formatGoogleCalendarURL(appointment)}
               />
             )}
 
