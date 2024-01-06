@@ -10,7 +10,10 @@ export default function Cita() {
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-  const [selectedTime, setSelectedTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+
+  const currentHour = new Date().getHours();
+  const [selectedTime, setSelectedTime] = useState(`${currentHour}:00`);
+  
   const [selectedDuration, setSelectedDuration] = useState('01:00');
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [showQRCodeIndex, setShowQRCodeIndex] = useState<number | null>(null);
