@@ -85,7 +85,7 @@ export default function Cita() {
       month: 'long',
       day: 'numeric',
     });
-    const message = `Cita: An appointment was created for you \u{1F389}!\n${appointment.title}\nWhen: ${formattedDate} at ${appointment.selectedTime} h\n\n\nClick link to add to your calendar: ${formatGoogleCalendarURL(appointment)}`;
+    const message = `An appointment was created for you \u{1F389}!\n${appointment.title}\nWhen: ${formattedDate} at ${appointment.selectedTime} h\n\n\nClick link to add to your calendar: ${formatGoogleCalendarURL(appointment)}`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -217,7 +217,7 @@ export default function Cita() {
                 className="text-green-500 hover:text-green-700 font-bold py-1 mr-5"
                 onClick={() => shareViaWhatsApp(appointments[index])}
               >
-                <FaWhatsapp size={30}/>
+                <FaWhatsapp size={30} />
               </button>
 
               <button
