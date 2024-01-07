@@ -6,6 +6,7 @@ import Image from 'next/image';
 import InputField from './components/InputField';
 import Appointment from './interfaces/Appointment';
 import Link from 'next/link';
+import Footer from './components/Footer';
 
 export default function Cita() {
   const [title, setTitle] = useState('');
@@ -241,9 +242,7 @@ export default function Cita() {
           </div>
         ))}
       </div>
-      <div>
-        <Link href="/privacy">Privacy</Link> | <Link href="/imprint">Imprint</Link>
-      </div>
+      <Footer/>
     </main>
   );
 }

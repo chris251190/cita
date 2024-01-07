@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 const Imprint = () => (
     <div>
@@ -9,6 +10,8 @@ const Imprint = () => (
     <p>22179 Hamburg</p>
     <p>Phone: +4915202685626</p>
     <p>Email: christian_lehr.1@gmx.de</p>
+
+    <Footer/>
   </div>
 );
 
