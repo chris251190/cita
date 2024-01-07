@@ -2,13 +2,34 @@
 import QRCode from 'qrcode.react';
 import React, { useState } from 'react';
 import { FaTimes, FaEye, FaCalendar, FaPlus, FaMinus, FaQrcode, FaWhatsapp } from 'react-icons/fa';
-import Image from 'next/image';
 import InputField from './components/InputField';
 import Appointment from './interfaces/Appointment';
 import Footer from './components/Footer';
 import Logo from './components/Logo';
 
 export default function Cita() {
+
+  let deferredPrompt: BeforeInstallPromptEvent | null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+});
+
+const promptInstall = () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('Benutzer akzeptierte die A2HS-Aufforderung');
+      } else {
+        console.log('Benutzer lehnte die A2HS-Aufforderung ab');
+      }
+      deferredPrompt = null;
+    });
+  }
+};
+  
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
@@ -239,6 +260,10 @@ export default function Cita() {
 
           </div>
         ))}
+
+<button onClick={() => promptInstall()}>
+  Zur Startseite hinzufügen
+</button>
       </div>
       <Footer/>
     </main>
