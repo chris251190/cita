@@ -50,7 +50,9 @@ const InstallPWAButton: React.FC = () => {
     return (
         <button
             className="border-orange-500 hover:border-orange-700 border-solid border-2 bg-transparent hover:text-orange-700 text-orange-500 font-bold py-1 px-2 rounded mr-3"
-            onClick={promptInstall}>
+            onClick={promptInstall}
+            disabled={!isPromptReady} // Button ist deaktiviert, wenn isPromptReady false ist
+            >
             Install App
         </button>
     );
