@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from '../components/Footer';
 import Logo from '../components/Logo';
+import './imprint.css';
 
 const Imprint = () => (
     <div className='flex flex-col items-center text-center'>
