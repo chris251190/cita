@@ -30,6 +30,7 @@ const InstallPWAButton: React.FC = () => {
 
       const promptInstall = () => {
         if (deferredPrompt) {
+            console.log('Showing install prompt'); // Neu
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choiceResult) => {
                 if (choiceResult.outcome === 'accepted') {
@@ -39,6 +40,8 @@ const InstallPWAButton: React.FC = () => {
                 }
                 deferredPrompt = null;
                 setPromptReady(false);
+            }).catch((error) => {
+                console.error('Error showing install prompt', error); // Neu
             });
         }
     };
