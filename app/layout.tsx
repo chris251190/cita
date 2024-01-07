@@ -7,12 +7,15 @@ export const metadata: Metadata = {
   title: 'Cita',
   description: 'Welcome to Cita, the easiest way to create and share appointments!',
   keywords: ["Cita", "Appointments", "Easy", "QR Code", "Share", "Welcome to Cita, the easiest way to create and share appointments!"],
-  openGraph: { 
+  openGraph: {
     url: `${process.env.NEXT_PUBLIC_VERCEL_URL}`,
     type: 'website',
     images: `${process.env.NEXT_PUBLIC_VERCEL_URL}/Cita.png`
   },
-  other: { "google-site-verification": "MF0nmTcSbW1jaxYHcBLYd1ZxfIqZ7aEwxJK_FAXoeaU" },
+  other: {
+    "google-site-verification": "MF0nmTcSbW1jaxYHcBLYd1ZxfIqZ7aEwxJK_FAXoeaU",
+    "google-adsense-account": "ca-pub-3664964817217395"
+  },
 }
 
 export default function RootLayout({
