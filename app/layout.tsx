@@ -6,7 +6,6 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Cita',
   description: 'Welcome to Cita, the easiest way to create and share appointments!',
-  viewport: "width=device-width, initial-scale=1.0",
   manifest: "/clients/tvvest/manifest.json",
   keywords: ["Cita", "Appointments", "Easy", "QR Code", "Share", "Welcome to Cita, the easiest way to create and share appointments!"],
   openGraph: {
@@ -19,6 +18,8 @@ export const metadata: Metadata = {
     "google-adsense-account": "ca-pub-3664964817217395"
   },
 }
+
+export const viewport = "width=device-width, initial-scale=1.0";
 
 export default function RootLayout({
   children,
