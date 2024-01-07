@@ -16,5 +16,14 @@ h2 {
 }
 
 h3 {
-    @apply text-xl font-medium mb-3 mt-3 text-center;
+    @apply text-xl font-semibold mb-3 mt-3 text-center;
+}
+
+h4 {
+    @apply text-lg font-semibold mb-3 mt-3 text-center;
+}
+
+li {
+    @apply list-disc;
+    list-style-type: "- ";
 }
