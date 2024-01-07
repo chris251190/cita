@@ -17,19 +17,19 @@ export default function manifest(): MetadataRoute.Manifest {
                 type: 'image/x-icon',
             },
             {
-                src: '/icon.png',
+                src: '/android-launchericon-512-512.png',
                 sizes: '512x512',
                 type: 'image/png',
             },
         ],
         screenshots: [
             {
-                src: '/screenshot_lg.png',
+                src: '/screen_lg.png',
                 sizes: '1920x1080',
                 type: 'image/png',
             },
             {
-                src: '/screenshot_sm.png',
+                src: '/screen_sm.png',
                 sizes: '1280x720',
                 type: 'image/png',
             },
