@@ -6,6 +6,7 @@ import Image from 'next/image';
 import InputField from './components/InputField';
 import Appointment from './interfaces/Appointment';
 import Footer from './components/Footer';
+import Logo from './components/Logo';
 
 export default function Cita() {
   const [title, setTitle] = useState('');
@@ -102,9 +103,7 @@ export default function Cita() {
 
   return (
     <main className="flex flex-col items-center bg-gradient-to-r from-yellow-500 to-orange-500 bg-repeat-x bg-cover min-h-screen">
-      <div className="w-full flex justify-center">
-        <Image src="/Cita.png" alt="Logo" width={200} height={200} />
-      </div>
+      <Logo/>
       <div className="flex flex-col items-center justify-center mb-10">
         <h1 className="text-2xl font-bold mb-5">Next Appointment:</h1>
         <div>
