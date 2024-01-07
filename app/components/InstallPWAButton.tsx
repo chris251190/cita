@@ -23,26 +23,19 @@ const InstallPWAButton: React.FC = () => {
     useEffect(() => {
         window.addEventListener('beforeinstallprompt', (e) => {
           e.preventDefault();
-          console.log('beforeinstallprompt event fired');
           deferredPrompt = e;
-          setPromptReady(true); // Setzen Sie den Zustand auf true, wenn das Ereignis ausgelöst wird
+          setPromptReady(true);
         });
       }, []);
 
       const promptInstall = () => {
         if (deferredPrompt) {
-            console.log('Showing install prompt'); // Neu
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choiceResult) => {
                 if (choiceResult.outcome === 'accepted') {
-                    console.log('Benutzer akzeptierte die A2HS-Aufforderung');
-                } else {
-                    console.log('Benutzer lehnte die A2HS-Aufforderung ab');
+                    deferredPrompt = null;
+                    setPromptReady(false);
                 }
-                deferredPrompt = null;
-                setPromptReady(false);
-            }).catch((error) => {
-                console.error('Error showing install prompt', error); // Neu
             });
         }
     };
@@ -51,7 +44,7 @@ const InstallPWAButton: React.FC = () => {
         <button
             className="border-orange-500 hover:border-orange-700 border-solid border-2 bg-transparent hover:text-orange-700 text-orange-500 font-bold py-1 px-2 rounded mr-3"
             onClick={promptInstall}
-            disabled={!isPromptReady} // Button ist deaktiviert, wenn isPromptReady false ist
+            disabled={!isPromptReady}
             >
             Install App
         </button>
