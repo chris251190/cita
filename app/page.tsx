@@ -5,7 +5,6 @@ import { FaTimes, FaEye, FaCalendar, FaPlus, FaMinus, FaQrcode, FaWhatsapp } fro
 import Image from 'next/image';
 import InputField from './components/InputField';
 import Appointment from './interfaces/Appointment';
-import Link from 'next/link';
 import Footer from './components/Footer';
 
 export default function Cita() {
