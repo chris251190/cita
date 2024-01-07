@@ -105,7 +105,7 @@ export default function Cita() {
     <main className="flex flex-col items-center bg-gradient-to-r from-yellow-500 to-orange-500 bg-repeat-x bg-cover min-h-screen">
       <Logo/>
       <div className="flex flex-col items-center justify-center mb-10">
-        <h1 className="text-2xl font-bold mb-10">Create and share your next appointment!</h1>
+        <h1 className="text-2xl font-bold mb-10 text-center">Create and share your next appointment!</h1>
         <div>
           <form className="flex flex-col items-center justify-center" onSubmit={handleFormSubmit}>
             <InputField
