@@ -10,6 +10,11 @@ export default function manifest(): MetadataRoute.Manifest {
         display: 'standalone',
         background_color: '#fff',
         theme_color: '#f97316',
+        dir: 'ltr', 
+        launch_handler: {
+            platform: 'macos',
+            url: 'https://cita-three.vercel.app/'
+        },
         categories: ['business', 'productivity'],
         icons: [
             {
