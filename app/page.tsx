@@ -6,6 +6,7 @@ import InputField from './components/InputField';
 import Appointment from './interfaces/Appointment';
 import Footer from './components/Footer';
 import Logo from './components/Logo';
+import InstallPWAButton from './components/InstallPWAButton';
 
 export default function Cita() {
   const [title, setTitle] = useState('');
@@ -102,7 +103,7 @@ export default function Cita() {
 
   return (
     <main className="flex flex-col items-center bg-gradient-to-r from-yellow-500 to-orange-500 bg-repeat-x bg-cover min-h-screen">
-      <Logo/>
+      <Logo />
       <div className="flex flex-col items-center justify-center mb-10">
         <h1 className="text-2xl font-bold mb-10 text-center">Create and share your next appointment!</h1>
         <div>
@@ -238,8 +239,9 @@ export default function Cita() {
 
           </div>
         ))}
+        <InstallPWAButton />
       </div>
-      <Footer/>
+      <Footer />
     </main>
   );
 }
