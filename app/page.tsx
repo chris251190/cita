@@ -13,7 +13,7 @@ export default function Cita() {
   const [location, setLocation] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
 
-  const currentHour = new Date().getHours();
+  const currentHour = new Date().getHours().toString().padStart(2, '0');
   const currentMinutes = new Date().getMinutes();
   const selectedMinutes = currentMinutes < 15 || currentMinutes >= 45 ? '00' : '30';
   const [selectedTime, setSelectedTime] = useState(`${currentHour}:${selectedMinutes}`);
