@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Cita',
   description: 'Welcome to Cita, the easiest way to create and share appointments!',
   keywords: ["Cita", "Appointments", "Easy", "QR Code", "Share", "Welcome to Cita, the easiest way to create and share appointments!"],
+  metadataBase: new URL('https://cita-three.vercel.app/'),
   openGraph: {
     url: `${process.env.NEXT_PUBLIC_VERCEL_URL}`,
     type: 'website',
