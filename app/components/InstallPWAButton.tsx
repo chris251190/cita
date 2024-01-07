@@ -23,6 +23,7 @@ const InstallPWAButton: React.FC = () => {
     useEffect(() => {
         window.addEventListener('beforeinstallprompt', (e) => {
           e.preventDefault();
+          console.log('beforeinstallprompt event fired');
           deferredPrompt = e;
           setPromptReady(true); // Setzen Sie den Zustand auf true, wenn das Ereignis ausgelöst wird
         });
