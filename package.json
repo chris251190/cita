@@ -11,7 +11,6 @@
   "dependencies": {
     "ics": "^3.7.2",
     "next": "^14.0.4",
-    "next-pwa": "^5.6.0",
     "qrcode.react": "^3.1.0",
     "react": "^18",
     "react-dom": "^18",
