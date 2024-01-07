@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 declare global {
     interface WindowEventMap {
@@ -18,14 +18,17 @@ declare global {
 let deferredPrompt: BeforeInstallPromptEvent | null;
 
 const InstallPWAButton: React.FC = () => {
-    useEffect(() => {
-      window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-      });
-    }, []);
+    const [isPromptReady, setPromptReady] = useState(false);
 
-    const promptInstall = () => {
+    useEffect(() => {
+        window.addEventListener('beforeinstallprompt', (e) => {
+          e.preventDefault();
+          deferredPrompt = e;
+          setPromptReady(true); // Setzen Sie den Zustand auf true, wenn das Ereignis ausgelöst wird
+        });
+      }, []);
+
+      const promptInstall = () => {
         if (deferredPrompt) {
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choiceResult) => {
@@ -35,6 +38,7 @@ const InstallPWAButton: React.FC = () => {
                     console.log('Benutzer lehnte die A2HS-Aufforderung ab');
                 }
                 deferredPrompt = null;
+                setPromptReady(false);
             });
         }
     };
