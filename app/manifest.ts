@@ -44,5 +44,8 @@ export default function manifest(): MetadataRoute.Manifest {
                 type: 'image/png',
             },
         ],
+        orientation: 'any',
+        scope: '/',
+        prefer_related_applications: false,
     }
 }
