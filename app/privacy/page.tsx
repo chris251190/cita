@@ -3,7 +3,6 @@ import Footer from '../components/Footer';
 import Logo from '../components/Logo';
 import './privacy.css';
 
-
 const Privacy = () => (
     <div className='p-24 flex flex-col items-center'>
         <Logo/>
