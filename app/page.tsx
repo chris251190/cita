@@ -1,6 +1,6 @@
 "use client";
 import QRCode from 'qrcode.react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaTimes, FaEye, FaCalendar, FaPlus, FaMinus, FaQrcode, FaWhatsapp } from 'react-icons/fa';
 import InputField from './components/InputField';
 import Appointment from './interfaces/Appointment';
@@ -9,6 +9,15 @@ import Logo from './components/Logo';
 import InstallPWAButton from './components/InstallPWAButton';
 
 export default function Cita() {
+
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('/service-worker.js', { scope: '/docs' })
+        .then((registration) => console.log('scope is: ', registration.scope));
+    }
+  }, []);
+  
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
