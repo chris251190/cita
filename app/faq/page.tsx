@@ -6,14 +6,29 @@ const FAQPage: React.FC = () => {
 
     const faqData = [
         {
-            question: 'What is Tailwind CSS?',
-            answer: 'Tailwind CSS is a utility-first CSS framework that allows you to rapidly build custom user interfaces.'
+            question: 'What kind of software is this?',
+            answer: 'Cita is a Webapp designed to easily create simple appointments and sharen them with friends or customers.'
         },
         {
-            question: 'How do I install Tailwind CSS?',
-            answer: 'You can install Tailwind CSS via npm or yarn by running the appropriate command in your project directory.'
+            question: 'What makes Cita different to other Appointment Apps?',
+            answer: 'Many Apps nowadays cost something or you first have to go first through an installation process. I wanted to create a simple App to reduce the use of paper which can be used by everyone to create appointments in an easy way without any complications or learning curves on how to use the App.'
         },
-        // Add more FAQ data here...
+        {
+            question: 'Which calendars are supported?',
+            answer: 'Currently only Google Calendar is supported.'
+        },
+        {
+            question: 'Why is there an App Install Button?',
+            answer: 'Cita is a PWA (Progressive Web App) which means you can install it on your device and use it like a native App. This is especially useful for mobile devices.'
+        },
+        {
+            question: 'Where can I submit my Feedback or request new features?',
+            answer: 'You can leave me a mail at christian_lehr.1@gmx.de. I would love to hear from you!'
+        },
+        {
+            question: 'Does it cost something or will in the future?',
+            answer: 'No the App is currently free. Probably the App will be monetized in the future with ads or maybe a premium version with more features.'
+        },
     ];
 
     const toggleAccordion = (index: number) => {
