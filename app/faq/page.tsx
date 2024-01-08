@@ -21,9 +21,9 @@ const FAQPage: React.FC = () => {
     };
 
     return (
-        <div className="max-w-lg mx-auto flex justify-center items-center">
+        <div className="max-w-lg mx-auto flex justify-center items-center h-screen">
             <div className="w-full">
-                <h1 className="text-2xl font-bold mb-4">FAQ</h1>
+                <h1 className="text-2xl font-bold mb-4 text-center">FAQ - Frequently Asked Questions</h1>
                 {faqData.map((faq, index) => (
                     <div key={index} className="border-b border-orange-700">
                         <button
