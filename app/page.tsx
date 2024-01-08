@@ -28,8 +28,8 @@ export default function Cita() {
   const [selectedTime, setSelectedTime] = useState(`${currentHour}:${selectedMinutes}`);
 
   const [selectedDuration, setSelectedDuration] = useState('01:00');
-  const [appointments, setAppointments] = useState<Appointment[]>([]);
-  const [showQRCodeIndex, setShowQRCodeIndex] = useState<number | null>(null);
+  const [appointment, setAppointment] = useState<Appointment | null>(null);
+  const [showQRCode, setShowQRCode] = useState(false);
   const [showLocation, setShowLocation] = useState(false);
   const [showDuration, setShowDuration] = useState(false);
 
@@ -58,12 +58,13 @@ export default function Cita() {
     e.preventDefault();
 
     const newAppointment: Appointment = { title, location, selectedDate, selectedTime, selectedDuration };
-    setAppointments(prevAppointments => [...prevAppointments, newAppointment]);
-    setShowQRCodeIndex(0);
+    setAppointment(newAppointment);
+    setShowQRCode(true);
   };
 
-  const handleRemoveAppointment = (index: number) => {
-    setAppointments(prevAppointments => prevAppointments.filter((_, i) => i !== index));
+  const handleRemoveAppointment = () => {
+    setAppointment(null);
+    setShowQRCode(false);
   };
 
   const formatGoogleCalendarURL = (appointment: Appointment) => {
@@ -194,18 +195,18 @@ export default function Cita() {
       </div>
 
       <div>
-        {showQRCodeIndex !== null && appointments.length > 0 && (
+        {showQRCode && appointment && (
           <h1 className="text-2xl font-bold mb-5 text-center">Scan QRCode or send via WhatsApp:</h1>
         )}
 
-        {appointments.slice(-1).map((appointment, index) => (
-          <div key={index} className="mb-10 flex flex-col items-center justify-center">
+        {appointment && (
+          <div className="mb-10 flex flex-col items-center justify-center">
             <p className='font-bold text-xl'>{appointment.title ? appointment.title : ''}</p>
             {appointment.location && (<p>Where: {appointment.location}</p>)}
             <p>{new Date(appointment.selectedDate).toLocaleDateString()} ({new Date(appointment.selectedDate).toLocaleDateString('en-US', { weekday: 'long' })}) at {appointment.selectedTime} h</p>
             <p>Duration: {appointment.selectedDuration ? appointment.selectedDuration.replace(/^0/, '') : ''} h</p>
 
-            {showQRCodeIndex === index && (
+            {showQRCode && (
               <QRCode
                 className="mt-3 mb-3"
                 value={formatGoogleCalendarURL(appointment)}
@@ -222,21 +223,21 @@ export default function Cita() {
 
               <button
                 className="text-green-500 hover:text-green-700 font-bold py-1 mr-5"
-                onClick={() => shareViaWhatsApp(appointments[index])}
+                onClick={() => shareViaWhatsApp(appointment)}
               >
                 <FaWhatsapp size={30} />
               </button>
 
               <button
                 className="text-red-500 hover:text-red-700 font-bold py-1 rounded"
-                onClick={() => handleRemoveAppointment(index)}
+                onClick={handleRemoveAppointment}
               >
                 <FaTimes size={25} />
               </button>
             </div>
 
           </div>
-        ))}
+        )}
         <div className="flex justify-center items-center">
           <InstallPWAButton />
         </div>
