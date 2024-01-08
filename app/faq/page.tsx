@@ -39,7 +39,7 @@ const FAQPage: React.FC = () => {
 
     return (
         <div className="max-w-lg mx-auto flex justify-center items-center h-screen">
-            <div className="w-full px-4">
+            <div className="w-full p-4">
                 <Logo />
 
                 <h1 className="text-2xl font-bold mb-4 text-center">FAQ - Frequently Asked Questions</h1>
