@@ -9,7 +9,7 @@ const FAQPage: React.FC = () => {
     const faqData = [
         {
             question: 'What kind of software is this?',
-            answer: 'Cita is a Webapp designed to easily create simple appointments and sharen them with friends or customers.'
+            answer: 'Cita is a Webapp designed to easily create simple appointments and share them with friends or customers.'
         },
         {
             question: 'What makes Cita different to other Appointment Apps?',
