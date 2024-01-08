@@ -4,7 +4,7 @@ import Logo from '../components/Logo';
 import './imprint.css';
 
 const Imprint = () => (
-    <div className='flex flex-col items-center text-center'>
+    <div className='flex flex-col items-center text-center p-4'>
         <Logo />
 
         <div>

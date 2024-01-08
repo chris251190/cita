@@ -109,7 +109,7 @@ export default function Cita() {
   };
 
   return (
-    <main className="flex flex-col items-center bg-gradient-to-r from-yellow-500 to-orange-500 bg-repeat-x bg-cover min-h-screen">
+    <main className="flex flex-col items-center bg-gradient-to-r from-yellow-500 to-orange-500 bg-repeat-x bg-cover min-h-screen p-4">
       <Logo />
       <div className="flex flex-col items-center justify-center mb-10">
         <h1 className="text-2xl font-bold mb-10 text-center">Create an appointment:</h1>
