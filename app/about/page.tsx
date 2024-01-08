@@ -11,7 +11,6 @@ const AboutPage = () => {
             <div className="text-center max-w-2xl mx-auto">
                 <Logo />
 
-
                 <Image src="/me.jpeg" width={200} height={200} alt="Profile Picture" className="rounded-full mx-auto mb-4" />
                 <h1 className="text-2xl mb-4">Hey there! 👋</h1>
                 <p className="mb-4">I am Christian, a passionate software developer from beautiful Hamburg programming mostly in Java Spring and Next.js. I love building innovative and user-friendly applications that solve real-world problems while always learning something new.</p>
