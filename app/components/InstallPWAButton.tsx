@@ -21,12 +21,15 @@ const InstallPWAButton: React.FC = () => {
     const [isPromptReady, setPromptReady] = useState(false);
 
     useEffect(() => {
-        window.addEventListener('beforeinstallprompt', (e) => {
-          e.preventDefault();
-          deferredPrompt = e;
-          setPromptReady(true);
-        });
-      }, []);
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+        if (!isStandalone) {
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                setPromptReady(true);
+            });
+        }
+    }, []);
 
       const promptInstall = () => {
         if (deferredPrompt) {
@@ -41,13 +44,14 @@ const InstallPWAButton: React.FC = () => {
     };
 
     return (
-        <button
-            className="border-orange-500 hover:border-orange-700 border-solid border-2 bg-transparent hover:text-orange-700 text-orange-500 font-bold py-1 px-2 rounded mr-3"
-            onClick={promptInstall}
-            disabled={!isPromptReady}
-            >
-            Install App
-        </button>
+        isPromptReady && (
+            <button
+                className="border-orange-500 hover:border-orange-700 border-solid border-2 bg-transparent hover:text-orange-700 text-orange-500 font-bold py-1 px-2 rounded mr-3"
+                onClick={promptInstall}
+                disabled={!isPromptReady}>
+                Install App
+            </button>
+        )
     );
 };
 
