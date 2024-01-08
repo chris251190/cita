@@ -3,11 +3,14 @@ import { FaInstagram, FaGithub } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '../components/Footer';
+import Logo from '../components/Logo';
 
 const AboutPage = () => {
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="text-center max-w-2xl mx-auto">
+                <Logo />
+
                 <h1 className="text-2xl mb-4">Hey there! 👋</h1>
 
                 <Image src="/me.jpeg" width={200} height={200} alt="Profile Picture" className="rounded-full mx-auto mb-4" />
@@ -25,7 +28,7 @@ const AboutPage = () => {
                         <FaGithub size={40} />
                     </Link>
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         </div>
     );

@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from 'react';
+import Footer from '../components/Footer';
+import Logo from '../components/Logo';
 
 const FAQPage: React.FC = () => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -38,6 +40,8 @@ const FAQPage: React.FC = () => {
     return (
         <div className="max-w-lg mx-auto flex justify-center items-center h-screen">
             <div className="w-full">
+                <Logo />
+
                 <h1 className="text-2xl font-bold mb-4 text-center">FAQ - Frequently Asked Questions</h1>
                 {faqData.map((faq, index) => (
                     <div key={index} className="border-b border-orange-700">
@@ -64,6 +68,7 @@ const FAQPage: React.FC = () => {
                         )}
                     </div>
                 ))}
+                <Footer />
             </div>
         </div>
     );
