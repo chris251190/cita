@@ -14,7 +14,7 @@ const AboutPage = () => {
 
                 <p className="mb-4">Welcome to Cita - The easiest way to create and share appointments!</p>
                 <p className="mb-4">I am Christian, a passionate software developer from beautiful Hamburg with expertise in Java Spring and Next.js. I love building innovative and user-friendly applications that solve real-world problems while always learning something new.</p>
-                <p className="mb-4">When I&apos;m not coding I love to stand up paddle, play squash with friends or do some gaming on Switch/PC. Additionally I&apos;m a big anime fan &hearts; and try to raise more awareness about veganism. &#127793;&#128046;&#128055;&#128040;&#128031;</p>
+                <p className="mb-4">When I&apos;m not coding I love to stand up paddle, play squash with friends or do some gaming on Switch/PC. Additionally I&apos;m a big anime fan ❤️ and try to raise more awareness about veganism and animal rights. &#127793;&#128046;&#128055;&#128040;&#128031;</p>
                 <p className="mb-4">I created Cita to help people create and share appointments with their friends and family. I hope you enjoy using it!</p>
                 <p className="mb-4">Feel free to connect with me on social media:</p>
                 <div className="flex justify-center items-center">
