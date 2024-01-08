@@ -12,7 +12,7 @@ const AboutPage = () => {
                 <Logo />
 
                 <Image src="/me.jpeg" width={200} height={200} alt="Profile Picture" className="rounded-full mx-auto mb-4" />
-                <h1 className="text-2xl mb-4">Hey there! 👋</h1>
+                <h1 className="text-lg mb-4">Hey there! 👋</h1>
                 <p className="mb-4">I am Christian, a passionate software developer from beautiful Hamburg programming mostly in Java Spring and Next.js. I love building innovative and user-friendly applications that solve real-world problems while always learning something new.</p>
                 <p className="mb-4">When I&apos;m not coding I love to stand up paddle, play squash with friends or do some gaming on Switch/PC. Additionally I&apos;m a big anime fan ❤️ and try to raise more awareness about veganism and animal rights. &#127793;&#128046;&#128055;&#128040;&#128031;</p>
                 <p className="mb-4">I created Cita to help people create and share appointments with their friends and family. I hope you enjoy using it!</p>
