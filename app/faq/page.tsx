@@ -45,11 +45,10 @@ const FAQPage: React.FC = () => {
                             className="flex items-center justify-between w-full p-4 focus:outline-none"
                             onClick={() => toggleAccordion(index)}
                         >
-                            <span className="font-medium">{faq.question}</span>
+                            <span className="font-medium hover:text-orange-700">{faq.question}</span>
                             <svg
-                                className={`w-4 h-4 transition-transform ${
-                                    activeIndex === index ? 'transform rotate-180' : ''
-                                }`}
+                                className={`hover:text-orange-700 w-4 h-4 transition-transform ${activeIndex === index ? 'transform rotate-180' : ''
+                                    }`}
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
