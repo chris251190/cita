@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
         description: 'The easiest way to create and share your appointments.',
         start_url: '/',
         display: 'standalone',
-        background_color: '#fff',
+        background_color: '#F97316',
         theme_color: '#f97316',
         dir: 'ltr', 
         launch_handler: {
