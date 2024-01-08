@@ -8,7 +8,7 @@ import Logo from '../components/Logo';
 const AboutPage = () => {
     return (
         <div className="flex justify-center items-center h-screen">
-            <div className="text-center max-w-2xl mx-auto">
+            <div className="text-center max-w-2xl mx-auto px-4">
                 <Logo />
 
                 <Image src="/me.jpeg" width={200} height={200} alt="Profile Picture" className="rounded-full mx-auto mb-4" />

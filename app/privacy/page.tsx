@@ -4,7 +4,7 @@ import Logo from '../components/Logo';
 import './privacy.css';
 
 const Privacy = () => (
-    <div className='p-24 flex flex-col items-center'>
+    <div className='p-12 flex flex-col items-center'>
         <Logo />
         <h1>Privacy Policy</h1>
         <p>Last updated: January 07, 2024</p>
