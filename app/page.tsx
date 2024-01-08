@@ -17,7 +17,7 @@ export default function Cita() {
         .then((registration) => console.log('scope is: ', registration.scope));
     }
   }, []);
-  
+
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
@@ -248,8 +248,9 @@ export default function Cita() {
 
           </div>
         ))}
-        <InstallPWAButton />
-      </div>
+        <div className="flex justify-center items-center">
+          <InstallPWAButton />
+        </div>      </div>
       <Footer />
     </main>
   );
