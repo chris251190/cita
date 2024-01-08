@@ -66,10 +66,6 @@ export default function Cita() {
     setAppointments(prevAppointments => prevAppointments.filter((_, i) => i !== index));
   };
 
-  const handleToggleQRCode = (index: number) => {
-    setShowQRCodeIndex(prevIndex => (prevIndex === index ? null : index));
-  };
-
   const formatGoogleCalendarURL = (appointment: Appointment) => {
     const formatISODate = (date: Date) => date.toISOString().replace(/-|:|\.\d\d\d/g, '');
 
@@ -114,7 +110,7 @@ export default function Cita() {
     <main className="flex flex-col items-center bg-gradient-to-r from-yellow-500 to-orange-500 bg-repeat-x bg-cover min-h-screen">
       <Logo />
       <div className="flex flex-col items-center justify-center mb-10">
-        <h1 className="text-2xl font-bold mb-10 text-center">Create and share your next appointment!</h1>
+        <h1 className="text-2xl font-bold mb-10 text-center">Create your next appointment:</h1>
         <div>
           <form className="flex flex-col items-center justify-center" onSubmit={handleFormSubmit}>
             <InputField
@@ -199,10 +195,10 @@ export default function Cita() {
 
       <div>
         {showQRCodeIndex !== null && appointments.length > 0 && (
-          <h1 className="text-2xl font-bold mb-5 text-center">Recently created:</h1>
+          <h1 className="text-2xl font-bold mb-5 text-center">Scan QRCode or send via WhatsApp:</h1>
         )}
 
-        {[...appointments].reverse().map((appointment, index) => (
+        {appointments.slice(-1).map((appointment, index) => (
           <div key={index} className="mb-10 flex flex-col items-center justify-center">
             <p className='font-bold text-xl'>{appointment.title ? appointment.title : ''}</p>
             {appointment.location && (<p>Where: {appointment.location}</p>)}
@@ -217,13 +213,6 @@ export default function Cita() {
             )}
 
             <div className='flex justify-center items-center'>
-              <button
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded mr-3"
-                onClick={() => handleToggleQRCode(index)}
-              >
-                <FaEye />
-              </button>
-
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-3"
                 onClick={() => window.open(formatGoogleCalendarURL(appointment), '_blank')}
@@ -250,7 +239,8 @@ export default function Cita() {
         ))}
         <div className="flex justify-center items-center">
           <InstallPWAButton />
-        </div>      </div>
+        </div>
+      </div>
       <Footer />
     </main>
   );
