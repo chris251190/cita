@@ -25,7 +25,7 @@ const FAQPage: React.FC = () => {
             <div className="w-full">
                 <h1 className="text-2xl font-bold mb-4">FAQ</h1>
                 {faqData.map((faq, index) => (
-                    <div key={index} className="border-b">
+                    <div key={index} className="border-b border-orange-700">
                         <button
                             className="flex items-center justify-between w-full p-4 focus:outline-none"
                             onClick={() => toggleAccordion(index)}
