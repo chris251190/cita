@@ -33,7 +33,7 @@ const Modal: React.FC<ModalProps> = ({ appointment, formatGoogleCalendarURL, sha
                             </button>
 
                             <button
-                                className="text-green-500 hover:text-green-700 font-bold py-1 mr-5"
+                                className="text-green-500 hover:text-green-700 font-bold py-1"
                                 onClick={() => shareViaWhatsApp(appointment)}
                             >
                                 <FaWhatsapp size={30} />
